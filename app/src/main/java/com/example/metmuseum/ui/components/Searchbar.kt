@@ -23,6 +23,7 @@ import com.example.metmuseum.R
 fun PrevSearch() {
     Searchbar(modifier = Modifier.padding(8.dp))
 }
+
 @Composable
 fun Searchbar(
     modifier: Modifier

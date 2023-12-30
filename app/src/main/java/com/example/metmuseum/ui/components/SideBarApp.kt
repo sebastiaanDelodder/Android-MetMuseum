@@ -51,7 +51,6 @@ fun SideBarApp(
                     Icon(
                         imageVector = Icons.Default.Home,
                         contentDescription = null,
-                        //tint = MaterialTheme.colorScheme.secondary
                     )
                 },
                 label = {
@@ -63,7 +62,7 @@ fun SideBarApp(
                 selected = true,
                 onClick = {},
                 colors = NavigationRailItemDefaults.colors(
-                    selectedIconColor = Color.DarkGray,
+                    selectedIconColor = Color.White,
                     indicatorColor = MaterialTheme.colorScheme.surface,
                     unselectedIconColor = MaterialTheme.colorScheme.secondary,
                 ),
@@ -74,7 +73,6 @@ fun SideBarApp(
                     Icon(
                         imageVector = Icons.Default.List,
                         contentDescription = null,
-                        tint = MaterialTheme.colorScheme.secondary
                     )
                 },
                 label = {
@@ -84,7 +82,12 @@ fun SideBarApp(
                     )
                 },
                 selected = false,
-                onClick = {}
+                onClick = {},
+                colors = NavigationRailItemDefaults.colors(
+                    selectedIconColor = Color.White,
+                    indicatorColor = MaterialTheme.colorScheme.surface,
+                    unselectedIconColor = MaterialTheme.colorScheme.secondary,
+                ),
             )
             Spacer(modifier = Modifier.height(8.dp))
             NavigationRailItem(
@@ -92,7 +95,6 @@ fun SideBarApp(
                     Icon(
                         imageVector = Icons.Default.FavoriteBorder,
                         contentDescription = null,
-                        tint = MaterialTheme.colorScheme.secondary
                     )
                 },
                 label = {
@@ -102,7 +104,12 @@ fun SideBarApp(
                     )
                 },
                 selected = false,
-                onClick = {}
+                onClick = {},
+                colors = NavigationRailItemDefaults.colors(
+                    selectedIconColor = Color.White,
+                    indicatorColor = MaterialTheme.colorScheme.surface,
+                    unselectedIconColor = MaterialTheme.colorScheme.secondary,
+                ),
             )
         }
     }

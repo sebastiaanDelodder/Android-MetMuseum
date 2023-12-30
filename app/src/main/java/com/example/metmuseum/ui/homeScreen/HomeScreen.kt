@@ -11,7 +11,7 @@ fun HomeScreen(
     modifier: Modifier = Modifier
 ) {
     Text(
-        modifier = Modifier.padding(8.dp),
+        modifier = modifier.padding(8.dp),
         text =
         """
                     

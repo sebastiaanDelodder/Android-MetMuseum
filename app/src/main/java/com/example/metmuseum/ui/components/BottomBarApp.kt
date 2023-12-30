@@ -22,6 +22,7 @@ import com.example.metmuseum.R
 fun Nav() {
     BottomBarApp()
 }
+
 @Composable
 fun BottomBarApp(
     modifier: Modifier = Modifier
@@ -35,7 +36,6 @@ fun BottomBarApp(
                 Icon(
                     imageVector = Icons.Default.Home,
                     contentDescription = null,
-                    //tint = MaterialTheme.colorScheme.secondary
                 )
             },
             label = {
@@ -47,7 +47,7 @@ fun BottomBarApp(
             selected = true,
             onClick = {},
             colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = Color.DarkGray,
+                selectedIconColor = Color.White,
                 indicatorColor = MaterialTheme.colorScheme.surface,
                 unselectedIconColor = MaterialTheme.colorScheme.secondary,
             ),
@@ -57,7 +57,6 @@ fun BottomBarApp(
                 Icon(
                     imageVector = Icons.Default.List,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.secondary
                 )
             },
             label = {
@@ -67,14 +66,18 @@ fun BottomBarApp(
                 )
             },
             selected = false,
-            onClick = {}
+            onClick = {},
+            colors = NavigationBarItemDefaults.colors(
+                selectedIconColor = Color.White,
+                indicatorColor = MaterialTheme.colorScheme.surface,
+                unselectedIconColor = MaterialTheme.colorScheme.secondary,
+            ),
         )
         NavigationBarItem(
             icon = {
                 Icon(
                     imageVector = Icons.Default.FavoriteBorder,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.secondary
                 )
             },
             label = {
@@ -84,7 +87,12 @@ fun BottomBarApp(
                 )
             },
             selected = false,
-            onClick = {}
+            onClick = {},
+            colors = NavigationBarItemDefaults.colors(
+                selectedIconColor = Color.White,
+                indicatorColor = MaterialTheme.colorScheme.surface,
+                unselectedIconColor = MaterialTheme.colorScheme.secondary,
+            ),
         )
     }
 }

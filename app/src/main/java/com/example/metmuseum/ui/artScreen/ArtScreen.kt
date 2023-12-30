@@ -28,5 +28,4 @@ fun ArtScreen(
         Spacer(modifier = Modifier.height(36.dp))
         DepartmentGrid()
     }
-
 }
