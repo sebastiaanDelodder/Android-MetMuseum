@@ -3,6 +3,7 @@ package com.example.metmuseum.ui.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -17,20 +18,29 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.metmuseum.R
+import com.example.metmuseum.model.Artpiece
 
-@Preview(showBackground = true, widthDp = 300, backgroundColor = 845)
+@Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
 @Composable
 fun ArtCardPrev() {
-    ArtCard()
+    ArtCard(art = Artpiece(
+        objectID = 1,
+        isPublicDomain = true,
+        primaryImage = "https://images.metmuseum.org/CRDImages/aa/original/LC-45_24_17-006.jpg",
+        primaryImageSmall = "https://images.metmuseum.org/CRDImages/aa/web-large/LC-45_24_17-006.jpg",
+        title = "Knife Handle (Kozuka)"
+    ))
 }
 @Composable
 fun ArtCard(
+    art : Artpiece,
     modifier : Modifier = Modifier
 ) {
     Surface (
         shape = MaterialTheme.shapes.medium,
         modifier = modifier
-            .padding(8.dp)
+            //.padding(4.dp)
+            .fillMaxWidth(),
     ){
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -43,8 +53,8 @@ fun ArtCard(
                 modifier = Modifier.size(100.dp)
 
             )
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(text = "Test art piece")
+            Spacer(modifier = Modifier.width(16.dp))
+            Text(text = art.title)
         }
     }
 

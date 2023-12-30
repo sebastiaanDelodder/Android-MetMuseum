@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.metmuseum.ui.artScreen.ArtScreenColumn
 import com.example.metmuseum.ui.theme.MetMuseumTheme
 
 class MainActivity : ComponentActivity() {
@@ -96,6 +97,7 @@ fun ScaffoldExample() {
                 Immerse yourself in the art world like never before. From ancient artifacts to contemporary masterpieces, The Met's mobile app is your key to unlocking the beauty, history, and inspiration that lie within the museum's unparalleled collection. Start your art adventure today!
                 """.trimIndent(),
             )
+            ArtScreenColumn()
         }
     }
 }
