@@ -30,6 +30,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.metmuseum.ui.artScreen.ArtScreen
+import com.example.metmuseum.ui.components.BottomBarApp
 import com.example.metmuseum.ui.homeScreen.HomeScreen
 import com.example.metmuseum.ui.theme.MetMuseumTheme
 
@@ -53,8 +54,6 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScaffoldExample() {
-    var presses by remember { mutableIntStateOf(0) }
-
     Scaffold(
         topBar = {
             TopAppBar(
@@ -68,17 +67,8 @@ fun ScaffoldExample() {
             )
         },
         bottomBar = {
-            BottomAppBar(
-                containerColor = MaterialTheme.colorScheme.primary,
-                contentColor = MaterialTheme.colorScheme.secondary,
-            ) {
-                Text(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    textAlign = TextAlign.Center,
-                    text = "Home",
-                )
-            }
+                BottomBarApp()
+
         },
     ) { innerPadding ->
         Column(
@@ -86,7 +76,7 @@ fun ScaffoldExample() {
                 .padding(innerPadding),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            ArtScreen()
+            HomeScreen()
         }
     }
 }
