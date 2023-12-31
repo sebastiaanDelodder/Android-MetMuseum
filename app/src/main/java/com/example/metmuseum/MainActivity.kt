@@ -22,6 +22,7 @@ import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.metmuseum.ui.artScreen.ArtScreen
 import com.example.metmuseum.ui.components.BottomBarApp
 import com.example.metmuseum.ui.components.SideBarApp
 import com.example.metmuseum.ui.homeScreen.HomeScreen
@@ -83,7 +84,7 @@ fun MetMuseumAppPortrait() {
                 .padding(innerPadding),
             verticalArrangement = Arrangement.spacedBy(24.dp),
         ) {
-            HomeScreen()
+            ArtScreen()
         }
     }
 }

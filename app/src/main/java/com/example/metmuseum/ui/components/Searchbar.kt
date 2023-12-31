@@ -11,6 +11,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,16 +25,21 @@ import com.example.metmuseum.R
 @Preview(showBackground = true, widthDp = 300)
 @Composable
 fun PrevSearch() {
-    Searchbar(modifier = Modifier.padding(8.dp))
+    Searchbar(
+        search = "",
+        onValueChange = {},
+        modifier = Modifier.padding(8.dp))
 }
 
 @Composable
 fun Searchbar(
-    modifier: Modifier
+    search: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     TextField(
-        value = "",
-        onValueChange = {},
+        value = search,
+        onValueChange = onValueChange,
         leadingIcon = {
             Icon(
                 imageVector = Icons.Default.Search,

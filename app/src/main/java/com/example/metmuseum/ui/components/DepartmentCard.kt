@@ -62,7 +62,7 @@ fun DepartmentGrid(
 @Composable
 fun DepartmentCard(
     department: Department,
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
     Surface (
         shape = MaterialTheme.shapes.medium,
