@@ -3,6 +3,7 @@ package com.example.metmuseum.ui.artScreen
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -32,11 +33,10 @@ fun ArtScreen(
             search = search,
             onValueChange = { search = it },
             modifier = modifier
+                .padding(16.dp)
         )
         Text(text = search)
         Spacer(modifier = Modifier.height(16.dp))
         ArtScreenColumn(modifier = modifier)
-        Spacer(modifier = Modifier.height(36.dp))
-        DepartmentGrid()
     }
 }

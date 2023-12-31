@@ -20,11 +20,14 @@ import com.example.metmuseum.R
 @Preview
 @Composable
 fun Nav() {
-    BottomBarApp()
+    BottomBarApp(goHome = {}, goToArt = {}, goToFavorites = {})
 }
 
 @Composable
 fun BottomBarApp(
+    goHome: () -> Unit,
+    goToArt: () -> Unit,
+    goToFavorites: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     NavigationBar(
@@ -45,7 +48,7 @@ fun BottomBarApp(
                 )
             },
             selected = true,
-            onClick = {},
+            onClick = goHome,
             colors = NavigationBarItemDefaults.colors(
                 selectedIconColor = Color.White,
                 indicatorColor = MaterialTheme.colorScheme.surface,
@@ -66,7 +69,7 @@ fun BottomBarApp(
                 )
             },
             selected = false,
-            onClick = {},
+            onClick = goToArt,
             colors = NavigationBarItemDefaults.colors(
                 selectedIconColor = Color.White,
                 indicatorColor = MaterialTheme.colorScheme.surface,
@@ -87,7 +90,7 @@ fun BottomBarApp(
                 )
             },
             selected = false,
-            onClick = {},
+            onClick = goToFavorites,
             colors = NavigationBarItemDefaults.colors(
                 selectedIconColor = Color.White,
                 indicatorColor = MaterialTheme.colorScheme.surface,
