@@ -51,7 +51,28 @@ var listOfArt = listOf(
         primaryImage = "https://images.metmuseum.org/CRDImages/ad/original/136397.jpg",
         primaryImageSmall = "https://images.metmuseum.org/CRDImages/ad/web-large/136397.jpg",
         title = "Spoon Dish"
-    )
+    ),
+    Artpiece(
+        objectID = 5,
+        isPublicDomain = true,
+        primaryImage = "https://images.metmuseum.org/CRDImages/aa/original/LC-45_24_17-006.jpg",
+        primaryImageSmall = "https://images.metmuseum.org/CRDImages/aa/web-large/LC-45_24_17-006.jpg",
+        title = "Knife Handle (Kozuka)"
+    ),
+    Artpiece(
+        objectID = 6,
+        isPublicDomain = true,
+        primaryImage = "https://images.metmuseum.org/CRDImages/ad/original/136397.jpg",
+        primaryImageSmall = "https://images.metmuseum.org/CRDImages/ad/web-large/136397.jpg",
+        title = "Spoon Dish"
+    ),
+    Artpiece(
+        objectID = 7,
+        isPublicDomain = true,
+        primaryImage = "https://images.metmuseum.org/CRDImages/aa/original/LC-45_24_17-006.jpg",
+        primaryImageSmall = "https://images.metmuseum.org/CRDImages/aa/web-large/LC-45_24_17-006.jpg",
+        title = "Knife Handle (Kozuka)"
+    ),
 )
 
 @Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)

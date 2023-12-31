@@ -29,6 +29,16 @@ var listOfDepartment = listOf(
     Department(4, "Arts of Africa, Oceania, and the Americas"),
     Department(5, "Asian Art"),
     Department(6, "The Cloisters"),
+    Department(7, "The Costume Institute"),
+    Department(8, "Drawings and Prints"),
+    Department(9, "Egyptian Art"),
+    Department(10, "European Paintings"),
+    Department(11, "European Sculpture and Decorative Arts"),
+    Department(12, "Greek and Roman Art"),
+    Department(13, "Islamic Art"),
+    Department(14, "The Robert Lehman Collection"),
+    Department(15, "The Libraries"),
+    Department(16, "Medieval Art"),
 )
 
 @Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
