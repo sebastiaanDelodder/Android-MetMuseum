@@ -4,7 +4,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.List
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -20,11 +22,16 @@ import com.example.metmuseum.R
 @Preview
 @Composable
 fun Nav() {
-    BottomBarApp()
+    BottomBar(goHome = {}, goToArt = {}, goToFavorites = {}, selectedItem = 0, onItemSelected = {})
 }
 
 @Composable
-fun BottomBarApp(
+fun BottomBar(
+    goHome: () -> Unit,
+    goToArt: () -> Unit,
+    goToFavorites: () -> Unit,
+    selectedItem : Int,
+    onItemSelected: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     NavigationBar(
@@ -44,8 +51,11 @@ fun BottomBarApp(
                     color = MaterialTheme.colorScheme.secondary
                 )
             },
-            selected = true,
-            onClick = {},
+            selected = selectedItem == 0,
+            onClick = {
+                onItemSelected(0)
+                goHome()
+            },
             colors = NavigationBarItemDefaults.colors(
                 selectedIconColor = Color.White,
                 indicatorColor = MaterialTheme.colorScheme.surface,
@@ -65,8 +75,11 @@ fun BottomBarApp(
                     color = MaterialTheme.colorScheme.secondary
                 )
             },
-            selected = false,
-            onClick = {},
+            selected = selectedItem == 1,
+            onClick = {
+                onItemSelected(1)
+                goToArt()
+            },
             colors = NavigationBarItemDefaults.colors(
                 selectedIconColor = Color.White,
                 indicatorColor = MaterialTheme.colorScheme.surface,
@@ -86,8 +99,11 @@ fun BottomBarApp(
                     color = MaterialTheme.colorScheme.secondary
                 )
             },
-            selected = false,
-            onClick = {},
+            selected = selectedItem == 2,
+            onClick = {
+                onItemSelected(2)
+                goToFavorites()
+            },
             colors = NavigationBarItemDefaults.colors(
                 selectedIconColor = Color.White,
                 indicatorColor = MaterialTheme.colorScheme.surface,
