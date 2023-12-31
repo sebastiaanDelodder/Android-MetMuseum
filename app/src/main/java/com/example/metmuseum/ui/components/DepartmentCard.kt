@@ -1,5 +1,6 @@
 package com.example.metmuseum.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -33,11 +34,12 @@ var listOfDepartment = listOf(
 @Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
 @Composable
 fun DepartmentcardPreview() {
-    DepartmentGrid()
+    DepartmentGrid(onDepartmentClick = {})
 }
 
 @Composable
 fun DepartmentGrid(
+    onDepartmentClick: (department: Department) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyVerticalGrid(
@@ -49,6 +51,7 @@ fun DepartmentGrid(
         items(listOfDepartment) {item ->
             DepartmentCard(
                 department = item,
+                onDepartmentClick = onDepartmentClick,
                 modifier = Modifier
                     .padding(8.dp)
                     .heightIn(min = 68.dp)
@@ -62,13 +65,15 @@ fun DepartmentGrid(
 @Composable
 fun DepartmentCard(
     department: Department,
+    onDepartmentClick: (department: Department) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Surface (
         shape = MaterialTheme.shapes.medium,
         modifier = modifier
             //.padding(4.dp)
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable { onDepartmentClick(department) }
     ) {
         Column (
             verticalArrangement = Arrangement.Center,

@@ -12,14 +12,20 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.metmuseum.R
 import com.example.metmuseum.ui.artScreen.ArtScreen
+import com.example.metmuseum.ui.components.BottomBar
 import com.example.metmuseum.ui.components.SideBarApp
-import com.example.metmuseum.ui.components.BottomBarApp
+import com.example.metmuseum.ui.components.TopBar
 import com.example.metmuseum.ui.navigation.Destinations
 import com.example.metmuseum.ui.navigation.NavigationComponent
 import com.example.metmuseum.ui.util.NavigationType
@@ -49,8 +55,7 @@ fun MetMuseumApp(
 fun MetMuseumAppPortrait(
     navController: NavHostController,
 ) {
-
-    val backStackEntry by navController.currentBackStackEntryAsState()
+    var selectedNavItem by remember { mutableIntStateOf(0) }
 
     //val canNavigateBack = navController.previousBackStackEntry != null
     //val navigateUp: () -> Unit = { navController.navigateUp() }
@@ -66,30 +71,27 @@ fun MetMuseumAppPortrait(
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.secondary,
-                ),
-                title = {
-                    Text("The Metropolitan Museum of Art")
-                }
+            TopBar(
+                title = when (selectedNavItem) {
+                    1 -> R.string.art
+                    2 -> R.string.favorites
+                    else -> R.string.museum
+                },
             )
         },
         bottomBar = {
-            BottomBarApp(goHome, goToArt, goToFavorites)
+            BottomBar(
+                goHome,
+                goToArt,
+                goToFavorites,
+                selectedItem = selectedNavItem,
+                onItemSelected = { index ->
+                    selectedNavItem = index
+
+                },)
         },
     ) { innerPadding ->
         NavigationComponent(navController = navController, modifier = Modifier.padding(innerPadding))
-
-        /*
-        Column(
-            modifier = Modifier
-                .padding(innerPadding),
-            verticalArrangement = Arrangement.spacedBy(24.dp),
-        ) {
-            //ArtScreen()
-        }*/
     }
 }
 

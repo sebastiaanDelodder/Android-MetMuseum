@@ -4,4 +4,6 @@
     <string name="art">Art</string>
     <string name="favorites">Favorites</string>
     <string name="search">Search</string>
+    <string name="museum">Metropolitan Museum of Art</string>
+    <string name="back">Back</string>
 </resources>
