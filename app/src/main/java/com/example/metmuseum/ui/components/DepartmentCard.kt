@@ -19,10 +19,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.metmuseum.R
 import com.example.metmuseum.data.DepartmentSampler
 import com.example.metmuseum.model.Department
 
@@ -41,20 +43,23 @@ fun DepartmentGrid(
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
-        contentPadding = PaddingValues(horizontal = 4.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        contentPadding = PaddingValues(horizontal = dimensionResource(id = R.dimen.padding_small)),
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.spacing_medium)),
         modifier = modifier
-            .padding(vertical = 24.dp)
+            .padding(vertical = dimensionResource(id = R.dimen.padding_xlarge))
     ){
         items(departments) {item ->
             DepartmentCard(
                 department = item,
                 onDepartmentClick = onDepartmentClick,
                 modifier = Modifier
-                    .padding(8.dp)
+                    .padding(dimensionResource(id = R.dimen.padding_medium))
 
                     //.height(68.dp)
-                    .heightIn(min = 68.dp, max = 100.dp)
+                    .heightIn(
+                        min = dimensionResource(id = R.dimen.card_size_min),
+                        max = dimensionResource(id = R.dimen.card_size_max)
+                    )
                     //.fillMaxSize()
                     //.fillMaxSize()
             )

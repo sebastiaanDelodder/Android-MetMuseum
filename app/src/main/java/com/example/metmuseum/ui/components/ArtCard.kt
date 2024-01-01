@@ -17,81 +17,33 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.metmuseum.R
+import com.example.metmuseum.data.ArtpieceSampler
 import com.example.metmuseum.model.Artpiece
 
-var listOfArt = listOf(
-    Artpiece(
-        objectID = 1,
-        isPublicDomain = true,
-        primaryImage = "https://images.metmuseum.org/CRDImages/aa/original/LC-45_24_17-006.jpg",
-        primaryImageSmall = "https://images.metmuseum.org/CRDImages/aa/web-large/LC-45_24_17-006.jpg",
-        title = "Knife Handle (Kozuka)"
-    ),
-    Artpiece(
-        objectID = 2,
-        isPublicDomain = true,
-        primaryImage = "https://images.metmuseum.org/CRDImages/ad/original/136397.jpg",
-        primaryImageSmall = "https://images.metmuseum.org/CRDImages/ad/web-large/136397.jpg",
-        title = "Spoon Dish"
-    ),
-    Artpiece(
-        objectID = 3,
-        isPublicDomain = true,
-        primaryImage = "https://images.metmuseum.org/CRDImages/aa/original/LC-45_24_17-006.jpg",
-        primaryImageSmall = "https://images.metmuseum.org/CRDImages/aa/web-large/LC-45_24_17-006.jpg",
-        title = "Knife Handle (Kozuka)"
-    ),
-    Artpiece(
-        objectID = 4,
-        isPublicDomain = true,
-        primaryImage = "https://images.metmuseum.org/CRDImages/ad/original/136397.jpg",
-        primaryImageSmall = "https://images.metmuseum.org/CRDImages/ad/web-large/136397.jpg",
-        title = "Spoon Dish"
-    ),
-    Artpiece(
-        objectID = 5,
-        isPublicDomain = true,
-        primaryImage = "https://images.metmuseum.org/CRDImages/aa/original/LC-45_24_17-006.jpg",
-        primaryImageSmall = "https://images.metmuseum.org/CRDImages/aa/web-large/LC-45_24_17-006.jpg",
-        title = "Knife Handle (Kozuka)"
-    ),
-    Artpiece(
-        objectID = 6,
-        isPublicDomain = true,
-        primaryImage = "https://images.metmuseum.org/CRDImages/ad/original/136397.jpg",
-        primaryImageSmall = "https://images.metmuseum.org/CRDImages/ad/web-large/136397.jpg",
-        title = "Spoon Dish"
-    ),
-    Artpiece(
-        objectID = 7,
-        isPublicDomain = true,
-        primaryImage = "https://images.metmuseum.org/CRDImages/aa/original/LC-45_24_17-006.jpg",
-        primaryImageSmall = "https://images.metmuseum.org/CRDImages/aa/web-large/LC-45_24_17-006.jpg",
-        title = "Knife Handle (Kozuka)"
-    ),
-)
 
 @Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
 @Composable
 fun ArtCardPrev() {
-    ArtScreenColumn()
+    ArtScreenColumn(artpieces = ArtpieceSampler.getAll())
 }
 
 @Composable
 fun ArtScreenColumn(
-    modifier : Modifier = Modifier
+    artpieces: List<Artpiece>,
+    modifier: Modifier = Modifier,
 ) {
     LazyColumn(
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-        contentPadding = PaddingValues(horizontal = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.spacing_large)),
+        contentPadding = PaddingValues(horizontal = dimensionResource(id = R.dimen.padding_large)),
         modifier = modifier
 
     ) {
-        items(listOfArt) { item ->
+        items(artpieces) { item ->
             ArtCard(
                 modifier = modifier,
                 art = item
@@ -114,15 +66,14 @@ fun ArtCard(
     ){
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = modifier.width(255.dp),
         ) {
             Image(
                 painter = painterResource(id = R.drawable.testimage),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.size(100.dp)
+                modifier = Modifier.size(dimensionResource(id = R.dimen.img_size_medium))
             )
-            Spacer(modifier = Modifier.width(16.dp))
+            Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.size_medium)))
             Text(
                 text = art.title,
                 color = MaterialTheme.colorScheme.onSecondaryContainer
