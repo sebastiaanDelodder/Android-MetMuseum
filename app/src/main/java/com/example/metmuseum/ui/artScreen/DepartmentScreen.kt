@@ -23,9 +23,9 @@ fun DepartmentPreview() {
 }
 @Composable
 fun DepartmentScreen(
-    departmentViewModel: DepartmentViewModel = viewModel(),
     onDepartmentClick: (department: Department) -> Unit,
-    modifier : Modifier = Modifier
+    modifier: Modifier = Modifier,
+    departmentViewModel: DepartmentViewModel = viewModel()
 ) {
     val departmentUiState by departmentViewModel.uiState.collectAsState()
 
