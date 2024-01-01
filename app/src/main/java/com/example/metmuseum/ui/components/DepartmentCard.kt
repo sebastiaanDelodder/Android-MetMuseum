@@ -20,37 +20,21 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.metmuseum.data.DepartmentSampler
 import com.example.metmuseum.model.Department
 
-var listOfDepartment = listOf(
-    Department(1, "American Decorative Arts"),
-    Department(2, "Ancient Near Eastern Art"),
-    Department(3, "Arms and Armor"),
-    Department(4, "Arts of Africa, Oceania, and the Americas"),
-    Department(5, "Asian Art"),
-    Department(6, "The Cloisters"),
-    Department(7, "The Costume Institute"),
-    Department(8, "Drawings and Prints"),
-    Department(9, "Egyptian Art"),
-    Department(10, "European Paintings"),
-    Department(11, "European Sculpture and Decorative Arts"),
-    Department(12, "Greek and Roman Art"),
-    Department(13, "Islamic Art"),
-    Department(14, "The Robert Lehman Collection"),
-    Department(15, "The Libraries"),
-    Department(16, "Medieval Art"),
-)
 
 @Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
 @Composable
 fun DepartmentcardPreview() {
-    DepartmentGrid(onDepartmentClick = {})
+    DepartmentGrid(onDepartmentClick = {}, departments = DepartmentSampler.getAll())
 }
 
 @Composable
 fun DepartmentGrid(
     onDepartmentClick: (department: Department) -> Unit,
-    modifier: Modifier = Modifier
+    departments: List<Department>,
+    modifier: Modifier = Modifier,
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -58,7 +42,7 @@ fun DepartmentGrid(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = modifier
     ){
-        items(listOfDepartment) {item ->
+        items(departments) {item ->
             DepartmentCard(
                 department = item,
                 onDepartmentClick = onDepartmentClick,
