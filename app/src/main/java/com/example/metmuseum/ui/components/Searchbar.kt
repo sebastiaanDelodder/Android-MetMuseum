@@ -47,8 +47,9 @@ fun Searchbar(
             )
         },
         colors = TextFieldDefaults.colors(
-            //unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-            focusedContainerColor = MaterialTheme.colorScheme.surface,
+            unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+            focusedContainerColor = MaterialTheme.colorScheme.tertiaryContainer,
+            focusedTextColor = MaterialTheme.colorScheme.onTertiaryContainer,
         ),
         placeholder = {
             Text(

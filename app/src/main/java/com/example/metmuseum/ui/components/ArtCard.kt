@@ -110,6 +110,7 @@ fun ArtCard(
         modifier = modifier
             //.padding(4.dp)
             .fillMaxWidth(),
+        color = MaterialTheme.colorScheme.secondaryContainer,
     ){
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -120,10 +121,12 @@ fun ArtCard(
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.size(100.dp)
-
             )
             Spacer(modifier = Modifier.width(16.dp))
-            Text(text = art.title)
+            Text(
+                text = art.title,
+                color = MaterialTheme.colorScheme.onSecondaryContainer
+            )
         }
     }
 }

@@ -48,7 +48,7 @@ fun BottomBar(
             label = {
                 Text(
                     text = stringResource(R.string.home),
-                    color = MaterialTheme.colorScheme.secondary
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
             },
             selected = selectedItem == 0,
@@ -57,9 +57,9 @@ fun BottomBar(
                 goHome()
             },
             colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = Color.White,
+                selectedIconColor = MaterialTheme.colorScheme.onSurface,
                 indicatorColor = MaterialTheme.colorScheme.surface,
-                unselectedIconColor = MaterialTheme.colorScheme.secondary,
+                unselectedIconColor = MaterialTheme.colorScheme.onPrimary,
             ),
         )
         NavigationBarItem(
@@ -72,7 +72,7 @@ fun BottomBar(
             label = {
                 Text(
                     text = stringResource(R.string.art),
-                    color = MaterialTheme.colorScheme.secondary
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
             },
             selected = selectedItem == 1,
@@ -81,9 +81,9 @@ fun BottomBar(
                 goToArt()
             },
             colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = Color.White,
+                selectedIconColor = MaterialTheme.colorScheme.onSurface,
                 indicatorColor = MaterialTheme.colorScheme.surface,
-                unselectedIconColor = MaterialTheme.colorScheme.secondary,
+                unselectedIconColor = MaterialTheme.colorScheme.onPrimary,
             ),
         )
         NavigationBarItem(
@@ -96,7 +96,7 @@ fun BottomBar(
             label = {
                 Text(
                     text = stringResource(R.string.favorites),
-                    color = MaterialTheme.colorScheme.secondary
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
             },
             selected = selectedItem == 2,
@@ -105,9 +105,9 @@ fun BottomBar(
                 goToFavorites()
             },
             colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = Color.White,
+                selectedIconColor = MaterialTheme.colorScheme.onSurface,
                 indicatorColor = MaterialTheme.colorScheme.surface,
-                unselectedIconColor = MaterialTheme.colorScheme.secondary,
+                unselectedIconColor = MaterialTheme.colorScheme.onPrimary,
             ),
         )
     }

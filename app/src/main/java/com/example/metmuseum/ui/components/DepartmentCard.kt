@@ -74,7 +74,8 @@ fun DepartmentCard(
         modifier = modifier
             //.padding(4.dp)
             .fillMaxWidth()
-            .clickable { onDepartmentClick(department) }
+            .clickable { onDepartmentClick(department) },
+        color = MaterialTheme.colorScheme.secondaryContainer,
     ) {
         Column (
             verticalArrangement = Arrangement.Center,
@@ -87,6 +88,7 @@ fun DepartmentCard(
                 textAlign = TextAlign.Center,
                 fontSize = 16.sp,
                 lineHeight = 16.sp,
+                color = MaterialTheme.colorScheme.onSecondaryContainer,
             )
         }
     }
