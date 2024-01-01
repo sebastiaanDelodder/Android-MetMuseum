@@ -4,7 +4,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -41,6 +44,7 @@ fun DepartmentGrid(
         contentPadding = PaddingValues(horizontal = 4.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = modifier
+            .padding(vertical = 24.dp)
     ){
         items(departments) {item ->
             DepartmentCard(
@@ -48,7 +52,10 @@ fun DepartmentGrid(
                 onDepartmentClick = onDepartmentClick,
                 modifier = Modifier
                     .padding(8.dp)
-                    .heightIn(min = 68.dp)
+
+                    //.height(68.dp)
+                    .heightIn(min = 68.dp, max = 100.dp)
+                    //.fillMaxSize()
                     //.fillMaxSize()
             )
         }
@@ -78,7 +85,8 @@ fun DepartmentCard(
             Text(
                 text = department.displayName,
                 textAlign = TextAlign.Center,
-                fontSize = 16.sp
+                fontSize = 16.sp,
+                lineHeight = 16.sp,
             )
         }
     }

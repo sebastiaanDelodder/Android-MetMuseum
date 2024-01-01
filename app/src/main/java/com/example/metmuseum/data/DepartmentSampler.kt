@@ -24,7 +24,7 @@ object DepartmentSampler {
             )
 
     val getAll: () -> List<Department> = {
-        Log.d("DepartmentSampler", "getAll called")
+        Log.i("DepartmentSampler", "getAll called")
         sampleDepartments
     }
 }
