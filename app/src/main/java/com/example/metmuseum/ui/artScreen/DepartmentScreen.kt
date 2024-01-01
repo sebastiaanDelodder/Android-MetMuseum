@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -26,14 +27,14 @@ fun DepartmentScreen(
     onDepartmentClick: (department: Department) -> Unit,
     modifier : Modifier = Modifier
 ) {
-    val departmentUiState = departmentViewModel.uiState.collectAsState()
+    val departmentUiState by departmentViewModel.uiState.collectAsState()
 
     Column (
         modifier = modifier
             .fillMaxSize()
     ){
         DepartmentGrid(
-            departments = departmentUiState.value.currentDepartments,
+            departments = departmentUiState.currentDepartments,
             onDepartmentClick = onDepartmentClick,
         )
     }

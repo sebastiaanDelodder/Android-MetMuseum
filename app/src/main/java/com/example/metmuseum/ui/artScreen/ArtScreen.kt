@@ -28,17 +28,17 @@ fun ArtScreen(
     modifier : Modifier = Modifier,
     artScreenViewModel: ArtScreenViewModel = viewModel()
 ) {
-    val artScreenState = artScreenViewModel.uiState.collectAsState()
+    val artScreenState by artScreenViewModel.uiState.collectAsState()
 
     Surface(
         modifier = modifier,
         color = Color.Transparent,
     ) {
-        if (artScreenState.value.currentDepartment == null){
+        if (artScreenState.currentDepartment == null){
             DepartmentScreen(onDepartmentClick = { artScreenViewModel.setDepartment(it) })
         } else {
             ArtOverview(
-                department = artScreenState.value.currentDepartment!!,
+                department = artScreenState.currentDepartment!!,
                 onBack = { artScreenViewModel.setDepartment(null) },
             )
         }
