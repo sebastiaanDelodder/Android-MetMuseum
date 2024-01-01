@@ -12,7 +12,7 @@
     <dimen name="spacing_medium">8dp</dimen>
     <dimen name="spacing_large">16dp</dimen>
     <dimen name="spacing_xlarge">24dp</dimen>
-    <dimen name="img_size_small">30dp</dimen>
+    <dimen name="img_size_small">40dp</dimen>
     <dimen name="img_size_medium">100dp</dimen>
     <dimen name="img_size_large">200dp</dimen>
     <dimen name="img_size_xlarge">300dp</dimen>
