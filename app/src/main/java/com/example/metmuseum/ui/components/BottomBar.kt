@@ -4,6 +4,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.outlined.Archive
+import androidx.compose.material.icons.outlined.ImportContacts
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -48,7 +50,7 @@ fun BottomBar(
             label = {
                 Text(
                     text = stringResource(R.string.home),
-                    color = MaterialTheme.colorScheme.secondary
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
             },
             selected = selectedItem == 0,
@@ -57,22 +59,22 @@ fun BottomBar(
                 goHome()
             },
             colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = Color.White,
+                selectedIconColor = MaterialTheme.colorScheme.onSurface,
                 indicatorColor = MaterialTheme.colorScheme.surface,
-                unselectedIconColor = MaterialTheme.colorScheme.secondary,
+                unselectedIconColor = MaterialTheme.colorScheme.onPrimary,
             ),
         )
         NavigationBarItem(
             icon = {
                 Icon(
-                    imageVector = Icons.Default.List,
+                    imageVector = Icons.Outlined.ImportContacts,
                     contentDescription = null,
                 )
             },
             label = {
                 Text(
                     text = stringResource(R.string.art),
-                    color = MaterialTheme.colorScheme.secondary
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
             },
             selected = selectedItem == 1,
@@ -81,9 +83,9 @@ fun BottomBar(
                 goToArt()
             },
             colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = Color.White,
+                selectedIconColor = MaterialTheme.colorScheme.onSurface,
                 indicatorColor = MaterialTheme.colorScheme.surface,
-                unselectedIconColor = MaterialTheme.colorScheme.secondary,
+                unselectedIconColor = MaterialTheme.colorScheme.onPrimary,
             ),
         )
         NavigationBarItem(
@@ -96,7 +98,7 @@ fun BottomBar(
             label = {
                 Text(
                     text = stringResource(R.string.favorites),
-                    color = MaterialTheme.colorScheme.secondary
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
             },
             selected = selectedItem == 2,
@@ -105,9 +107,9 @@ fun BottomBar(
                 goToFavorites()
             },
             colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = Color.White,
+                selectedIconColor = MaterialTheme.colorScheme.onSurface,
                 indicatorColor = MaterialTheme.colorScheme.surface,
-                unselectedIconColor = MaterialTheme.colorScheme.secondary,
+                unselectedIconColor = MaterialTheme.colorScheme.onPrimary,
             ),
         )
     }

@@ -16,6 +16,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -47,8 +48,9 @@ fun Searchbar(
             )
         },
         colors = TextFieldDefaults.colors(
-            //unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-            focusedContainerColor = MaterialTheme.colorScheme.surface,
+            unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+            focusedContainerColor = MaterialTheme.colorScheme.tertiaryContainer,
+            focusedTextColor = MaterialTheme.colorScheme.onTertiaryContainer,
         ),
         placeholder = {
             Text(
@@ -57,6 +59,6 @@ fun Searchbar(
         },
         modifier = modifier
             .fillMaxWidth()
-            .heightIn(min = 56.dp),
+            .heightIn(min = dimensionResource(id = R.dimen.textfield_min)),
     )
 }

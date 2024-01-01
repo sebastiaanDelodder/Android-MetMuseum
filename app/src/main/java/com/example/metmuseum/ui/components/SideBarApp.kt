@@ -10,6 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.outlined.ImportContacts
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarItemDefaults
@@ -22,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -56,40 +58,40 @@ fun SideBarApp(
                 label = {
                     Text(
                         text = stringResource(R.string.home),
-                        color = MaterialTheme.colorScheme.secondary
+                        color = MaterialTheme.colorScheme.onPrimary
                     )
                 },
                 selected = true,
                 onClick = {},
                 colors = NavigationRailItemDefaults.colors(
-                    selectedIconColor = Color.White,
+                    selectedIconColor = MaterialTheme.colorScheme.onSurface,
                     indicatorColor = MaterialTheme.colorScheme.surface,
-                    unselectedIconColor = MaterialTheme.colorScheme.secondary,
+                    unselectedIconColor = MaterialTheme.colorScheme.onPrimary,
                 ),
             )
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_medium)))
             NavigationRailItem(
                 icon = {
                     Icon(
-                        imageVector = Icons.Default.List,
+                        imageVector = Icons.Outlined.ImportContacts,
                         contentDescription = null,
                     )
                 },
                 label = {
                     Text(
                         text = stringResource(R.string.art),
-                        color = MaterialTheme.colorScheme.secondary
+                        color = MaterialTheme.colorScheme.onPrimary
                     )
                 },
                 selected = false,
                 onClick = {},
                 colors = NavigationRailItemDefaults.colors(
-                    selectedIconColor = Color.White,
+                    selectedIconColor = MaterialTheme.colorScheme.onSurface,
                     indicatorColor = MaterialTheme.colorScheme.surface,
-                    unselectedIconColor = MaterialTheme.colorScheme.secondary,
+                    unselectedIconColor = MaterialTheme.colorScheme.onPrimary,
                 ),
             )
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_medium)))
             NavigationRailItem(
                 icon = {
                     Icon(
@@ -100,15 +102,15 @@ fun SideBarApp(
                 label = {
                     Text(
                         text = stringResource(R.string.favorites),
-                        color = MaterialTheme.colorScheme.secondary
+                        color = MaterialTheme.colorScheme.onPrimary
                     )
                 },
                 selected = false,
                 onClick = {},
                 colors = NavigationRailItemDefaults.colors(
-                    selectedIconColor = Color.White,
+                    selectedIconColor = MaterialTheme.colorScheme.onSurface,
                     indicatorColor = MaterialTheme.colorScheme.surface,
-                    unselectedIconColor = MaterialTheme.colorScheme.secondary,
+                    unselectedIconColor = MaterialTheme.colorScheme.onPrimary,
                 ),
             )
         }
