@@ -6,10 +6,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.metmuseum.model.Department
+import com.example.metmuseum.ui.artScreen.viewModels.DepartmentViewModel
 import com.example.metmuseum.ui.components.DepartmentGrid
 
 @Preview(showBackground = true, backgroundColor = 0xFFF5F0EE, heightDp = 650)
@@ -20,15 +24,17 @@ fun DepartmentPreview() {
 @Composable
 fun DepartmentScreen(
     onDepartmentClick: (department: Department) -> Unit,
-    modifier : Modifier = Modifier
+    modifier: Modifier = Modifier,
+    departmentViewModel: DepartmentViewModel = viewModel()
 ) {
+    val departmentUiState by departmentViewModel.uiState.collectAsState()
+
     Column (
         modifier = modifier
             .fillMaxSize()
     ){
-        Text(text = "Departments")
-        Spacer(modifier = Modifier.height(16.dp))
         DepartmentGrid(
+            departments = departmentUiState.currentDepartments,
             onDepartmentClick = onDepartmentClick,
         )
     }
