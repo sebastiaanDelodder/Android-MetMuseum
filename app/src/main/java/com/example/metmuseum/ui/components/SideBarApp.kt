@@ -10,6 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.outlined.ImportContacts
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarItemDefaults
@@ -72,7 +73,7 @@ fun SideBarApp(
             NavigationRailItem(
                 icon = {
                     Icon(
-                        imageVector = Icons.Default.List,
+                        imageVector = Icons.Outlined.ImportContacts,
                         contentDescription = null,
                     )
                 },
