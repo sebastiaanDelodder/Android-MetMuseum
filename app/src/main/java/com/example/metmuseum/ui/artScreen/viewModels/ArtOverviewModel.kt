@@ -16,7 +16,6 @@ class ArtOverviewModel: ViewModel() {
         _uiState.update {
             currentState ->
             currentState.copy(
-                currentArtPieces = currentState.currentArtPieces,
                 search = search
             )
         }
