@@ -1,6 +1,8 @@
 package com.example.metmuseum.data
 
-import com.example.metmuseum.data.repository.ApiDepartmentsRepository
+import android.content.Context
+import com.example.metmuseum.data.database.departments.DepartmentDb
+import com.example.metmuseum.data.repository.CachingDepartmentsRepository
 import com.example.metmuseum.data.repository.DepartmentsRepository
 import com.example.metmuseum.network.DepartmentApiService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
@@ -12,7 +14,7 @@ interface AppContainer {
     val departmentsRepository: DepartmentsRepository
 }
 
-class DefaultAppContainer(): AppContainer {
+class DefaultAppContainer(private val context: Context): AppContainer {
     private val baseUrl = "https://collectionapi.metmuseum.org/public/collection/v1/"
 
     private val retrofit: Retrofit = Retrofit.Builder()
@@ -23,7 +25,8 @@ class DefaultAppContainer(): AppContainer {
     private val retrofitService : DepartmentApiService by lazy {
         retrofit.create(DepartmentApiService::class.java)
     }
+
     override val departmentsRepository: DepartmentsRepository by lazy {
-        ApiDepartmentsRepository(retrofitService)
+        CachingDepartmentsRepository(DepartmentDb.getDatabase(context = context).departmentDao(), retrofitService)
     }
 }
