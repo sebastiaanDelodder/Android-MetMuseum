@@ -87,11 +87,11 @@ class CachingDepartmentsRepository(
 
     override suspend fun refresh(){
         try {
-            Log.i("TESTAAA", "CYCLE")
             departmentApiService.getDepartmentsAsFlow().asDomainObjects().collect {
                     value ->
+                Log.i("CachingDepartmentsRepository", "refresh: $value")
                 for(department in value) {
-                    Log.i("TESTAAA", "refresh: $value")
+                    Log.i("CachingDepartmentsRepository", "refresh: $department")
                     insertDepartment(department)
                 }
 
