@@ -14,32 +14,61 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.metmuseum.Application
-import com.example.metmuseum.data.DepartmentSampler
-import com.example.metmuseum.data.repository.ApiDepartmentsRepository
 import com.example.metmuseum.data.repository.DepartmentsRepository
-import com.example.metmuseum.network.DepartmentApi
-import com.example.metmuseum.network.asDomainObjects
 import com.example.metmuseum.ui.artScreen.state.DepartmentApiState
-import com.example.metmuseum.ui.artScreen.state.DepartmentState
+import com.example.metmuseum.ui.artScreen.state.DepartmentListState
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.io.IOException
 
 class DepartmentViewModel(private val departmentsRepository: DepartmentsRepository) : ViewModel(){
-    private val _uiState = MutableStateFlow(DepartmentState(DepartmentSampler.getAll()))
-    val uiState: StateFlow<DepartmentState> = _uiState.asStateFlow()
+    //private val _uiState = MutableStateFlow(DepartmentState(DepartmentSampler.getAll()))
+    //val uiState: StateFlow<DepartmentState> = _uiState.asStateFlow()
+
+    /*
+    * Note: uiListState is a hot flow (.stateIn makes it so) --> it updates given a scope (viewmodelscope)
+    * when no updates are required (lifecycle) the subscription is stopped after a timeout
+    * */
+    lateinit var uiListState : StateFlow<DepartmentListState>
+
 
     // keeping the state of the api request
     var departmentApiState: DepartmentApiState by mutableStateOf(DepartmentApiState.Loading)
         private set
 
     init {
-        getApiDepartments()
+        // initialize the uiListState
+        getRepoDepartments()
+        Log.i("vm inspection", "DepartmentViewModel init")
     }
 
+    private fun getRepoDepartments(){
+        try {
+            viewModelScope.launch { departmentsRepository.refresh() }
+
+            uiListState = departmentsRepository.getDepartments().map { DepartmentListState(it) }
+                .stateIn(
+                    scope = viewModelScope,
+                    started = SharingStarted.WhileSubscribed(5_000L),
+                    initialValue = DepartmentListState()
+                )
+            departmentApiState = DepartmentApiState.Success
+        }
+        catch (e: IOException){
+            //show a toast? save a log on firebase? ...
+            //set the error state
+            //TODO
+            departmentApiState = DepartmentApiState.Error
+        }
+    }
+
+    /*
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     private fun getApiDepartments() {
         viewModelScope.launch {
@@ -57,7 +86,7 @@ class DepartmentViewModel(private val departmentsRepository: DepartmentsReposito
                 departmentApiState = DepartmentApiState.Error
             }
         }
-    }
+    }*/
 
     //object to tell the android framework how to handle the parameter of the viewmodel
     companion object {

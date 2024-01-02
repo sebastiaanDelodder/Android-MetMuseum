@@ -32,10 +32,12 @@ fun DepartmentScreen(
     departmentViewModel: DepartmentViewModel = viewModel(factory = DepartmentViewModel.Factory)
 ) {
     Log.i("vm inspection", "DepartmentScreen composition")
-    val departmentUiState by departmentViewModel.uiState.collectAsState()
+    //val departmentUiState by departmentViewModel.uiState.collectAsState()
+    val departmentListState by departmentViewModel.uiListState.collectAsState()
 
     //use the ApiState
     val departmentApiState = departmentViewModel.departmentApiState
+
     Column (
         modifier = modifier
             .fillMaxSize()
@@ -49,7 +51,7 @@ fun DepartmentScreen(
             }
             is DepartmentApiState.Success -> {
                 DepartmentGrid(
-                    departments = departmentUiState.currentDepartments,
+                    departments = departmentListState.departments,
                     onDepartmentClick = onDepartmentClick,
                 )
             }
