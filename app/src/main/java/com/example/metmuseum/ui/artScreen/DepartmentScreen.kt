@@ -29,7 +29,7 @@ fun DepartmentPreview() {
 fun DepartmentScreen(
     onDepartmentClick: (department: Department) -> Unit,
     modifier: Modifier = Modifier,
-    departmentViewModel: DepartmentViewModel = viewModel()
+    departmentViewModel: DepartmentViewModel = viewModel(factory = DepartmentViewModel.Factory)
 ) {
     Log.i("vm inspection", "DepartmentScreen composition")
     val departmentUiState by departmentViewModel.uiState.collectAsState()
