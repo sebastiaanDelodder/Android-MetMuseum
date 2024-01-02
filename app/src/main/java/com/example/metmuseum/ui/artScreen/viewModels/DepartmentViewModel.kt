@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.metmuseum.data.DepartmentSampler
 import com.example.metmuseum.network.DepartmentApi
+import com.example.metmuseum.network.asDomainObjects
 import com.example.metmuseum.ui.artScreen.state.DepartmentApiState
 import com.example.metmuseum.ui.artScreen.state.DepartmentState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,17 +29,19 @@ class DepartmentViewModel : ViewModel(){
     init {
         getApiDepartments()
     }
+
     private fun getApiDepartments() {
         viewModelScope.launch {
             try {
-                val listResult = DepartmentApi.retrofitService.getDepartments()
+                val listResult = DepartmentApi.retrofitService.getDepartments().departments
                 _uiState.update {
                     it.copy(
-                        departments = listResult
+                        currentDepartments = listResult.asDomainObjects()
                     )
                 }
-                departmentApiState = DepartmentApiState.Success(listResult)
+                departmentApiState = DepartmentApiState.Success(listResult.asDomainObjects())
             } catch (e: IOException) {
+                Log.i("vm inspection", "Error: $e")
                 departmentApiState = DepartmentApiState.Error
             }
         }

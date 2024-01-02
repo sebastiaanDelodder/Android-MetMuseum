@@ -3,8 +3,7 @@ package com.example.metmuseum.ui.artScreen.state
 import com.example.metmuseum.model.Department
 
 data class DepartmentState(
-    val currentDepartments: List<Department>,
-    var departments: String = ""
+    val currentDepartments: List<Department>
 )
 
 data class DepartmentListState(
@@ -12,7 +11,7 @@ data class DepartmentListState(
 )
 
 sealed interface DepartmentApiState {
-    data class Success(val departments: String) : DepartmentApiState
+    data class Success(val departments: List<Department>) : DepartmentApiState
     object Error : DepartmentApiState
     object Loading : DepartmentApiState
 }
