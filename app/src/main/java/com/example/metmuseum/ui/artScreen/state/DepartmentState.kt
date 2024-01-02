@@ -9,3 +9,9 @@ data class DepartmentState(
 data class DepartmentListState(
     val departments: List<Department> = listOf()
 )
+
+sealed interface DepartmentApiState {
+    data class Success(val departments: List<Department>) : DepartmentApiState
+    object Error : DepartmentApiState
+    object Loading : DepartmentApiState
+}
