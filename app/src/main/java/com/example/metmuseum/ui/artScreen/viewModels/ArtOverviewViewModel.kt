@@ -18,10 +18,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.io.IOException
@@ -42,17 +40,24 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
 
     init {
         // initialize the uiListState
-        getRepoArtpieces()
+        getRepoArtpieces(40)
         Log.i("vm inspection", "ArtpieceViewModel init")
     }
 
-    private fun getRepoArtpieces(){
+    private fun getRepoArtpieces(numberOfArtpieces: Int){
         try {
             viewModelScope.launch {
                 artpiecesRepository.refresh(1).collect{
                     Log.i("vm inspection", "collecting")
-                    uiState.value.currentList = it
-                    Log.i("vm inspection", "${uiState.value.currentList.size}")
+                    uiState.value.currentObjectIdList = it
+                    Log.i("vm inspection", "${uiState.value.currentObjectIdList.size}")
+                }
+
+                //todo max size check
+                for (i in 1..40){
+                    viewModelScope.launch {
+                        artpiecesRepository.refreshArtPiece(i)
+                    }
                 }
             }
 

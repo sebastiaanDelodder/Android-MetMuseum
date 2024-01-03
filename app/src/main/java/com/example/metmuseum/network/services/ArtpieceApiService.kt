@@ -1,14 +1,10 @@
-package com.example.metmuseum.network
+package com.example.metmuseum.network.services
 
 import android.util.Log
+import com.example.metmuseum.network.ApiArtpiece
 import com.example.metmuseum.network.items.ApiArtpieceItem
-import com.example.metmuseum.network.items.ApiDepartmentItem
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
-import retrofit2.Retrofit
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -28,5 +24,14 @@ fun ArtpieceApiService.getArtpiecesAsFlow(departmentId: Int): Flow<List<Int>> = 
     }
     catch(e: Exception){
         Log.e("API", "getArtpiecesAsFlow: "+e.stackTraceToString(), )
+    }
+}
+
+fun ArtpieceApiService.getArtpieceAsFlow(objectId: Int): Flow<ApiArtpiece> = flow {
+    try {
+        emit(getArtpiece(objectId))
+    }
+    catch(e: Exception){
+        Log.e("API", "getArtpieceAsFlow: "+e.stackTraceToString(), )
     }
 }

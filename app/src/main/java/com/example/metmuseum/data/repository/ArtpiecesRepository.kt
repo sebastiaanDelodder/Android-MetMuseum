@@ -6,14 +6,14 @@ import com.example.metmuseum.data.database.artpieces.asDbArtpiece
 import com.example.metmuseum.data.database.artpieces.asDomainArtpiece
 import com.example.metmuseum.data.database.artpieces.asDomainArtpieces
 import com.example.metmuseum.model.Artpiece
-import com.example.metmuseum.model.Department
-import com.example.metmuseum.network.ArtpieceApiService
-import com.example.metmuseum.network.DepartmentApiService
+import com.example.metmuseum.network.asDomainObject
 import com.example.metmuseum.network.asDomainObjects
-import com.example.metmuseum.network.getArtpiecesAsFlow
-import com.example.metmuseum.network.getDepartmentsAsFlow
-import com.example.metmuseum.network.items.asDomainObjects
+import com.example.metmuseum.network.services.ArtpieceApiService
+import com.example.metmuseum.network.services.getArtpieceAsFlow
+import com.example.metmuseum.network.services.getArtpiecesAsFlow
+import com.example.metmuseum.network.services.getDepartmentsAsFlow
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import java.net.SocketTimeoutException
@@ -51,6 +51,11 @@ interface ArtpiecesRepository {
      * Refresh the artpieces stored in the data source
      */
     suspend fun refresh(departmentId : Int) : Flow<List<Int>>
+
+    /**
+     * Refresh the artpieces stored in the data source
+     */
+    suspend fun refreshArtPiece(objectId : Int)
 }
 
 class CachingArtpiecesRepository(
@@ -64,8 +69,9 @@ class CachingArtpiecesRepository(
         return artpieceDao.getAllArtpieces().map {
             it.asDomainArtpieces()
         }.onEach {
+            Log.i("CachingArtpiecesRepository", "getArtpieces: $it")
             //todo: check when refresh is called (why duplicates??)
-            if(it.isEmpty()){
+            if (it.isEmpty()) {
                 refresh(1)
             }
         }
@@ -89,18 +95,30 @@ class CachingArtpiecesRepository(
         artpieceDao.update(artpiece.asDbArtpiece())
     }
 
-    override suspend fun refresh(departmentId: Int) : Flow<List<Int>>{
+    override suspend fun refresh(departmentId: Int): Flow<List<Int>> {
         try {
             return artpieceApiService.getArtpiecesAsFlow(departmentId)
-        }
-        catch(e: SocketTimeoutException){
+        } catch (e: SocketTimeoutException) {
             //log something
             //TODO
-            Log.e("API", "refresh: "+e.stackTraceToString(), )
+            Log.e("API", "refresh: " + e.stackTraceToString(),)
             throw e
-        } catch (e: Exception){
-            Log.e("API", "refresh: "+e.stackTraceToString(), )
+        } catch (e: Exception) {
+            Log.e("API", "refresh: " + e.stackTraceToString(),)
             throw e
+        }
+    }
+
+    override suspend fun refreshArtPiece(objectId: Int) {
+        try {
+            artpieceApiService.getArtpieceAsFlow(objectId).asDomainObject().collect { value ->
+                Log.i("CachingArtpiecesRepository", "refresh: $value")
+                insertArtpiece(value)
+            }
+        } catch (e: SocketTimeoutException) {
+            //log something
+            //TODO
+            Log.e("API", "refresh: " + e.stackTraceToString(),)
         }
     }
 }

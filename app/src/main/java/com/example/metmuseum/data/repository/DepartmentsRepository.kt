@@ -6,9 +6,9 @@ import com.example.metmuseum.data.database.departments.asDbDepartment
 import com.example.metmuseum.data.database.departments.asDomainDepartment
 import com.example.metmuseum.data.database.departments.asDomainDepartments
 import com.example.metmuseum.model.Department
-import com.example.metmuseum.network.DepartmentApiService
+import com.example.metmuseum.network.services.DepartmentApiService
 import com.example.metmuseum.network.asDomainObjects
-import com.example.metmuseum.network.getDepartmentsAsFlow
+import com.example.metmuseum.network.services.getDepartmentsAsFlow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
@@ -102,6 +102,5 @@ class CachingDepartmentsRepository(
             //TODO
             Log.e("API", "refresh: "+e.stackTraceToString(), )
         }
-
     }
 }

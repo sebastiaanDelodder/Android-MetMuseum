@@ -7,8 +7,8 @@ import com.example.metmuseum.data.repository.ArtpiecesRepository
 import com.example.metmuseum.data.repository.CachingArtpiecesRepository
 import com.example.metmuseum.data.repository.CachingDepartmentsRepository
 import com.example.metmuseum.data.repository.DepartmentsRepository
-import com.example.metmuseum.network.ArtpieceApiService
-import com.example.metmuseum.network.DepartmentApiService
+import com.example.metmuseum.network.services.ArtpieceApiService
+import com.example.metmuseum.network.services.DepartmentApiService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType

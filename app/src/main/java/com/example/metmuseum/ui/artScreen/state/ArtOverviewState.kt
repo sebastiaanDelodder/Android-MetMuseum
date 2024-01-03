@@ -1,12 +1,12 @@
 package com.example.metmuseum.ui.artScreen.state
 
 import com.example.metmuseum.model.Artpiece
-import com.example.metmuseum.model.Department
 
 data class ArtOverviewState(
     //val currentArtPieces: List<Artpiece>,
     val search: String = "",
-    var currentList: List<Int> = listOf()
+    var currentObjectIdList: List<Int> = listOf(),
+    var currentLoadedIds: Int = 1,
 )
 
 data class ArtpieceListState(
