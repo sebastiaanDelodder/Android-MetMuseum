@@ -12,6 +12,7 @@ import com.example.metmuseum.network.DepartmentApiService
 import com.example.metmuseum.network.asDomainObjects
 import com.example.metmuseum.network.getArtpiecesAsFlow
 import com.example.metmuseum.network.getDepartmentsAsFlow
+import com.example.metmuseum.network.items.asDomainObjects
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
@@ -49,7 +50,7 @@ interface ArtpiecesRepository {
     /**
      * Refresh the artpieces stored in the data source
      */
-    suspend fun refresh()
+    suspend fun refresh(departmentId : Int)
 }
 
 class CachingArtpiecesRepository(
@@ -65,7 +66,7 @@ class CachingArtpiecesRepository(
         }.onEach {
             //todo: check when refresh is called (why duplicates??)
             if(it.isEmpty()){
-                refresh()
+                refresh(1)
             }
         }
     }
@@ -88,9 +89,9 @@ class CachingArtpiecesRepository(
         artpieceDao.update(artpiece.asDbArtpiece())
     }
 
-    override suspend fun refresh(){
+    override suspend fun refresh(departmentId: Int){
         try {
-            artpieceApiService.getArtpiecesAsFlow().asDomainObjects().collect {
+            artpieceApiService.getArtpiecesAsFlow(departmentId).asDomainObjects().collect {
                     value ->
                 Log.i("CachingArtpiecesRepository", "refresh: $value")
                 for(artpiece in value) {

@@ -46,7 +46,7 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
 
     private fun getRepoArtpieces(){
         try {
-            viewModelScope.launch { artpiecesRepository.refresh() }
+            viewModelScope.launch { artpiecesRepository.refresh(1) }
 
             uiListState = artpiecesRepository.getArtpieces().map { ArtpieceListState(it) }
                 .stateIn(
