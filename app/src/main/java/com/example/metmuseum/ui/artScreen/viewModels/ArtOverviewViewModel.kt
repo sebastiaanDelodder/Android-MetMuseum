@@ -55,7 +55,7 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
             viewModelScope.launch {
                 artpiecesRepository.refresh(uiState.value.department!!.departmentId).collect {
                     Log.i("vm inspection", "collecting")
-                    uiState.value.currentObjectIdList = it
+                    uiState.value.currentObjectIdList = it.sorted()
                     Log.i("vm inspection", "${uiState.value.currentObjectIdList.size}")
                 }
 
@@ -77,7 +77,7 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
 
             Log.i("TESTTTTT", "SOMETHING")
 
-            uiListState = artpiecesRepository.getArtpieces().map { ArtpieceListState(it) }
+            uiListState = artpiecesRepository.getArtpieces(uiState.value.department!!.displayName).map { ArtpieceListState(it) }
                 .stateIn(
                     scope = viewModelScope,
                     started = SharingStarted.WhileSubscribed(5_000L),
@@ -125,7 +125,8 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
             _uiState.update {
                     currentState ->
                 currentState.copy(
-                    department = department
+                    department = department,
+                    currentLoadedIds = 0,
                 )
             }
             getRepoArtpieces(40)

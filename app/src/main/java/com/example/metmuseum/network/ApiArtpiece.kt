@@ -84,6 +84,7 @@ fun ApiArtpiece.asDomainObject(): Artpiece {
         isPublicDomain = this.isPublicDomain,
         primaryImage = this.primaryImage,
         primaryImageSmall = this.primaryImageSmall,
-        title = this.title
+        title = this.title,
+        department = this.department
     )
 }

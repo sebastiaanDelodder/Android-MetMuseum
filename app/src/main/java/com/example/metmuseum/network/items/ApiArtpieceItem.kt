@@ -23,7 +23,8 @@ fun Flow<ApiArtpieceItem>.asDomainObjects(): Flow<List<Artpiece>> {
                 isPublicDomain = false,
                 primaryImage = "",
                 primaryImageSmall = "",
-                title = ""
+                title = "",
+                department = ""
             )
         }
     }

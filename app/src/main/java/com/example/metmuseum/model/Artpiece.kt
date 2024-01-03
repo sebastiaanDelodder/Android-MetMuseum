@@ -6,4 +6,5 @@ data class Artpiece (
     var primaryImage: String,
     var primaryImageSmall: String,
     var title: String,
+    var department: String,
 )

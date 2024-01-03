@@ -13,6 +13,7 @@ data class dbArtpiece (
     var primaryImage: String = "",
     var primaryImageSmall: String = "",
     var title: String = "",
+    var department: String = "",
 )
 
 fun dbArtpiece.asDomainArtpiece(): Artpiece {
@@ -21,7 +22,8 @@ fun dbArtpiece.asDomainArtpiece(): Artpiece {
         isPublicDomain = this.isPublicDomain,
         primaryImage = this.primaryImage,
         primaryImageSmall = this.primaryImageSmall,
-        title = this.title
+        title = this.title,
+        department = this.department
     )
 }
 
@@ -31,7 +33,8 @@ fun Artpiece.asDbArtpiece(): dbArtpiece {
         isPublicDomain = this.isPublicDomain,
         primaryImage = this.primaryImage,
         primaryImageSmall = this.primaryImageSmall,
-        title = this.title
+        title = this.title,
+        department = this.department
     )
 }
 
@@ -42,7 +45,8 @@ fun List<dbArtpiece>.asDomainArtpieces(): List<Artpiece>{
             isPublicDomain = it.isPublicDomain,
             primaryImage = it.primaryImage,
             primaryImageSmall = it.primaryImageSmall,
-            title = it.title
+            title = it.title,
+            department = it.department
         )
     }
     return artpieceList

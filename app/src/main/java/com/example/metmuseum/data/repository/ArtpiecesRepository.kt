@@ -25,7 +25,7 @@ interface ArtpiecesRepository {
     /**
      * Retrieve all the artpieces from the the given data source.
      */
-    fun getArtpieces(): Flow<List<Artpiece>>
+    fun getArtpieces(departmentName: String): Flow<List<Artpiece>>
 
     /**
      * Retrieve an artpiece from the given data source that matches with the [id].
@@ -65,8 +65,8 @@ class CachingArtpiecesRepository(
 
     //this repo contains logic to refresh the departments (remote)
     //sometimes that logic is written in a 'usecase'
-    override fun getArtpieces(): Flow<List<Artpiece>> {
-        return artpieceDao.getAllArtpieces().map {
+    override fun getArtpieces(departmentName: String): Flow<List<Artpiece>> {
+        return artpieceDao.getAllArtpieces(departmentName).map {
             it.asDomainArtpieces()
         }.onEach {
             Log.i("CachingArtpiecesRepository", "getArtpieces: $it")
