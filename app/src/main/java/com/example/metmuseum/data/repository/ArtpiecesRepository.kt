@@ -50,7 +50,7 @@ interface ArtpiecesRepository {
     /**
      * Refresh the artpieces stored in the data source
      */
-    suspend fun refresh(departmentId : Int)
+    suspend fun refresh(departmentId : Int) : Flow<List<Int>>
 }
 
 class CachingArtpiecesRepository(
@@ -89,22 +89,18 @@ class CachingArtpiecesRepository(
         artpieceDao.update(artpiece.asDbArtpiece())
     }
 
-    override suspend fun refresh(departmentId: Int){
+    override suspend fun refresh(departmentId: Int) : Flow<List<Int>>{
         try {
-            artpieceApiService.getArtpiecesAsFlow(departmentId).asDomainObjects().collect {
-                    value ->
-                Log.i("CachingArtpiecesRepository", "refresh: $value")
-                for(artpiece in value) {
-                    Log.i("CachingArtpiecesRepository", "refresh: $artpiece")
-                    insertArtpiece(artpiece)
-                }
-            }
+            return artpieceApiService.getArtpiecesAsFlow(departmentId)
         }
         catch(e: SocketTimeoutException){
             //log something
             //TODO
             Log.e("API", "refresh: "+e.stackTraceToString(), )
+            throw e
+        } catch (e: Exception){
+            Log.e("API", "refresh: "+e.stackTraceToString(), )
+            throw e
         }
-
     }
 }

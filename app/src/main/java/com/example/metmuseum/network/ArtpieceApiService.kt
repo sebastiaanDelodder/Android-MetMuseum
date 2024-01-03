@@ -22,9 +22,9 @@ interface ArtpieceApiService {
 }
 
 // helper function
-fun ArtpieceApiService.getArtpiecesAsFlow(departmentId: Int): Flow<ApiArtpieceItem> = flow {
+fun ArtpieceApiService.getArtpiecesAsFlow(departmentId: Int): Flow<List<Int>> = flow {
     try {
-        emit(getArtpieces(departmentId))
+        emit(getArtpieces(departmentId).objectIDs)
     }
     catch(e: Exception){
         Log.e("API", "getArtpiecesAsFlow: "+e.stackTraceToString(), )

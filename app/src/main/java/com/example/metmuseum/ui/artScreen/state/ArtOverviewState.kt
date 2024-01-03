@@ -5,7 +5,8 @@ import com.example.metmuseum.model.Department
 
 data class ArtOverviewState(
     //val currentArtPieces: List<Artpiece>,
-    val search: String = ""
+    val search: String = "",
+    var currentList: List<Int> = listOf()
 )
 
 data class ArtpieceListState(
