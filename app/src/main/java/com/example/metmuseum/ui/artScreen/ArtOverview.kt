@@ -33,8 +33,14 @@ fun ArtOverview(
     modifier: Modifier = Modifier,
     artOverviewViewModel: ArtOverviewViewModel = viewModel(factory = ArtOverviewViewModel.Factory)
 ) {
-    Log.i("vm inspection", "DepartmentScreen composition")
+    Log.i("vm inspection", "ArtOverview composition")
     val artOverviewState by artOverviewViewModel.uiState.collectAsState()
+
+    if(artOverviewState.department == null){
+        Log.i("vm inspection", "CHANGEEEE")
+        artOverviewViewModel.changeDepartment(department)
+    }
+
     val artpieceListState by artOverviewViewModel.uiListState.collectAsState()
 
     //use the ApiState

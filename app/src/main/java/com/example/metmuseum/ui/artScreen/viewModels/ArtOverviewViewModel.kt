@@ -11,6 +11,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.metmuseum.Application
 import com.example.metmuseum.data.repository.ArtpiecesRepository
+import com.example.metmuseum.model.Department
 import com.example.metmuseum.ui.artScreen.state.ArtOverviewState
 import com.example.metmuseum.ui.artScreen.state.ArtpieceApiState
 import com.example.metmuseum.ui.artScreen.state.ArtpieceListState
@@ -38,28 +39,38 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
     var artpieceApiState: ArtpieceApiState by mutableStateOf(ArtpieceApiState.Loading)
         private set
 
+
     init {
         // initialize the uiListState
-        getRepoArtpieces(40)
+        Log.i("TESTTTT", "INIT")
+        //getRepoArtpieces(0)
         Log.i("vm inspection", "ArtpieceViewModel init")
     }
 
     private fun getRepoArtpieces(numberOfArtpieces: Int){
         try {
             viewModelScope.launch {
-                artpiecesRepository.refresh(1).collect{
+                artpiecesRepository.refresh(uiState.value.department!!.departmentId).collect{
                     Log.i("vm inspection", "collecting")
                     uiState.value.currentObjectIdList = it
                     Log.i("vm inspection", "${uiState.value.currentObjectIdList.size}")
                 }
 
                 //todo max size check
-                for (i in 1..40){
+                for (i in uiState.value.currentLoadedIds .. uiState.value.currentLoadedIds + numberOfArtpieces)
                     viewModelScope.launch {
-                        artpiecesRepository.refreshArtPiece(i)
+                        artpiecesRepository.refreshArtPiece(uiState.value.currentObjectIdList[i])
                     }
                 }
+
+            _uiState.update {
+                currentState ->
+                currentState.copy(
+                    currentLoadedIds = currentState.currentLoadedIds + numberOfArtpieces
+                )
             }
+
+            Log.i("TESTTTTT", "SOMETHING")
 
             uiListState = artpiecesRepository.getArtpieces().map { ArtpieceListState(it) }
                 .stateIn(
@@ -93,12 +104,25 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
         }
     }
 
+    fun changeDepartment(department: Department){
+        Log.i("TESTTTTT", "CHANGING DEPARTMENT")
+        _uiState.update {
+            currentState ->
+            currentState.copy(
+                department = department
+            )
+        }
+        getRepoArtpieces(40)
+    }
+
     //object to tell the android framework how to handle the parameter of the viewmodel
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
+
             initializer {
                 val application = (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as Application)
                 val artpiecesRepository = application.container.artpiecesRepository
+                Log.i("TESTTTTT", "FACTORYYYYY")
                 ArtOverviewViewModel(
                     artpiecesRepository = artpiecesRepository
                 )
