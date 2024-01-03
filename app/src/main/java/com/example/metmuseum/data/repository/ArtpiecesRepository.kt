@@ -6,14 +6,12 @@ import com.example.metmuseum.data.database.artpieces.asDbArtpiece
 import com.example.metmuseum.data.database.artpieces.asDomainArtpiece
 import com.example.metmuseum.data.database.artpieces.asDomainArtpieces
 import com.example.metmuseum.model.Artpiece
+import com.example.metmuseum.model.Department
 import com.example.metmuseum.network.asDomainObject
-import com.example.metmuseum.network.asDomainObjects
 import com.example.metmuseum.network.services.ArtpieceApiService
 import com.example.metmuseum.network.services.getArtpieceAsFlow
 import com.example.metmuseum.network.services.getArtpiecesAsFlow
-import com.example.metmuseum.network.services.getDepartmentsAsFlow
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import java.net.SocketTimeoutException
@@ -25,7 +23,7 @@ interface ArtpiecesRepository {
     /**
      * Retrieve all the artpieces from the the given data source.
      */
-    fun getArtpieces(departmentName: String): Flow<List<Artpiece>>
+    fun getArtpieces(department: Department): Flow<List<Artpiece>>
 
     /**
      * Retrieve an artpiece from the given data source that matches with the [id].
@@ -65,14 +63,14 @@ class CachingArtpiecesRepository(
 
     //this repo contains logic to refresh the departments (remote)
     //sometimes that logic is written in a 'usecase'
-    override fun getArtpieces(departmentName: String): Flow<List<Artpiece>> {
-        return artpieceDao.getAllArtpieces(departmentName).map {
+    override fun getArtpieces(department: Department): Flow<List<Artpiece>> {
+        return artpieceDao.getAllArtpieces(department.displayName).map {
             it.asDomainArtpieces()
         }.onEach {
             Log.i("CachingArtpiecesRepository", "getArtpieces: $it")
             //todo: check when refresh is called (why duplicates??)
             if (it.isEmpty()) {
-                refresh(1)
+                refresh(department.departmentId)
             }
         }
     }

@@ -58,9 +58,20 @@ class DepartmentViewModel(private val departmentsRepository: DepartmentsReposito
                     started = SharingStarted.WhileSubscribed(5_000L),
                     initialValue = DepartmentListState()
                 )
+
             departmentApiState = DepartmentApiState.Success
         }
         catch (e: IOException){
+            //show a toast? save a log on firebase? ...
+            //set the error state
+            //TODO
+            departmentApiState = DepartmentApiState.Error
+        } catch (e: Exception){
+            //show a toast? save a log on firebase? ...
+            //set the error state
+            //TODO
+            departmentApiState = DepartmentApiState.Error
+        } catch (e: Error){
             //show a toast? save a log on firebase? ...
             //set the error state
             //TODO

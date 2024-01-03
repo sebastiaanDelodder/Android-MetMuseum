@@ -62,6 +62,7 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
                 //todo max size check
                 if (uiState.value.currentObjectIdList.size < uiState.value.currentLoadedIds + numberOfArtpieces){
                     Log.i("GET ID", "not enough ids")
+                    Log.i("GET ID", "${uiState.value.currentObjectIdList.size}")
                     artpieceApiState = ArtpieceApiState.Error
                     return@launch
                 } else {
@@ -92,7 +93,7 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
 
             Log.i("TESTTTTT", "SOMETHING")
 
-            uiListState = artpiecesRepository.getArtpieces(uiState.value.department!!.displayName).map { ArtpieceListState(it) }
+            uiListState = artpiecesRepository.getArtpieces(uiState.value.department!!).map { ArtpieceListState(it) }
                 .stateIn(
                     scope = viewModelScope,
                     started = SharingStarted.WhileSubscribed(5_000L),
