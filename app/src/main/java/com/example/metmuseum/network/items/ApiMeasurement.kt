@@ -17,4 +17,6 @@ data class ApiElementMeasurements (
     val Diameter: Double? = null,
     val Depth: Double? = null,
     val Weight: Double? = null,
+    val Length: Double? = null,
+    val Thickness: Double? = null,
 ) {}

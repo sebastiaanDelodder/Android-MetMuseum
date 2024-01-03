@@ -36,16 +36,16 @@ fun ArtOverview(
     Log.i("vm inspection", "ArtOverview composition")
     val artOverviewState by artOverviewViewModel.uiState.collectAsState()
 
-    if(artOverviewState.department == null){
-        Log.i("vm inspection", "CHANGEEEE")
-        artOverviewViewModel.changeDepartment(department)
-    }
+    Log.i("current department", artOverviewState.department.toString())
+    //todo equals doesnt work
+    artOverviewViewModel.changeDepartment(department)
 
     val artpieceListState by artOverviewViewModel.uiListState.collectAsState()
 
     //use the ApiState
     val artpieceApiState = artOverviewViewModel.artpieceApiState
 
+    Log.i("TESTINGGGGG SIZE", "${artOverviewState.currentObjectIdList.size}")
     Column {
         when(artpieceApiState) {
             is ArtpieceApiState.Loading -> {

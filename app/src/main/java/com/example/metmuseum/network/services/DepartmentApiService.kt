@@ -19,6 +19,6 @@ fun DepartmentApiService.getDepartmentsAsFlow(): Flow<List<ApiDepartment>> = flo
         emit(getDepartments().departments)
     }
     catch(e: Exception){
-        Log.e("API", "getDepartmentsAsFlow: "+e.stackTraceToString(), )
+        Log.e("DepartmentApiService", "Could not connect to host" )
     }
 }

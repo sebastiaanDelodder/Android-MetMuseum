@@ -22,6 +22,6 @@ interface ArtpieceDao {
     @Query("SELECT * from artpieces WHERE objectID = :id")
     fun getArtpiece(id: Int): Flow<dbArtpiece>
 
-    @Query("SELECT * from artpieces ORDER BY title ASC")
+    @Query("SELECT * from artpieces ORDER BY objectID ASC")
     fun getAllArtpieces(): Flow<List<dbArtpiece>>
 }

@@ -40,34 +40,39 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
         private set
 
 
+
+    /*
     init {
         // initialize the uiListState
         Log.i("TESTTTT", "INIT")
         //getRepoArtpieces(0)
         Log.i("vm inspection", "ArtpieceViewModel init")
-    }
+    }*/
+
 
     private fun getRepoArtpieces(numberOfArtpieces: Int){
         try {
             viewModelScope.launch {
-                artpiecesRepository.refresh(uiState.value.department!!.departmentId).collect{
+                artpiecesRepository.refresh(uiState.value.department!!.departmentId).collect {
                     Log.i("vm inspection", "collecting")
                     uiState.value.currentObjectIdList = it
                     Log.i("vm inspection", "${uiState.value.currentObjectIdList.size}")
                 }
 
                 //todo max size check
-                for (i in uiState.value.currentLoadedIds .. uiState.value.currentLoadedIds + numberOfArtpieces)
+                for (i in uiState.value.currentLoadedIds .. uiState.value.currentLoadedIds + numberOfArtpieces) {
                     viewModelScope.launch {
+                        Log.i("GET ID", "index $i")
                         artpiecesRepository.refreshArtPiece(uiState.value.currentObjectIdList[i])
                     }
                 }
 
-            _uiState.update {
-                currentState ->
-                currentState.copy(
-                    currentLoadedIds = currentState.currentLoadedIds + numberOfArtpieces
-                )
+                _uiState.update {
+                        currentState ->
+                            currentState.copy(
+                                currentLoadedIds = currentState.currentLoadedIds + numberOfArtpieces
+                            )
+                }
             }
 
             Log.i("TESTTTTT", "SOMETHING")
@@ -105,14 +110,26 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
     }
 
     fun changeDepartment(department: Department){
-        Log.i("TESTTTTT", "CHANGING DEPARTMENT")
-        _uiState.update {
-            currentState ->
-            currentState.copy(
-                department = department
-            )
+        Log.i("Change dep", "CHANGING DEPARTMENT")
+        if (uiState.value.department == null){
+            Log.i("Change dep", "IS NULL")
+            _uiState.update {
+                    currentState ->
+                currentState.copy(
+                    department = department
+                )
+            }
+            getRepoArtpieces(40)
+        } else if (uiState.value.department!!.departmentId != department.departmentId){
+            Log.i("Change dep", "IS NEW DEPARTMENT")
+            _uiState.update {
+                    currentState ->
+                currentState.copy(
+                    department = department
+                )
+            }
+            getRepoArtpieces(40)
         }
-        getRepoArtpieces(40)
     }
 
     //object to tell the android framework how to handle the parameter of the viewmodel

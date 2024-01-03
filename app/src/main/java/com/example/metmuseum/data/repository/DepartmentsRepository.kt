@@ -62,6 +62,7 @@ class CachingDepartmentsRepository(
         }.onEach {
             //todo: check when refresh is called (why duplicates??)
             if(it.isEmpty()){
+                Log.i("CachingDepartmentsRepository", "getDepartments")
                 refresh()
             }
         }
@@ -90,8 +91,9 @@ class CachingDepartmentsRepository(
             departmentApiService.getDepartmentsAsFlow().asDomainObjects().collect {
                     value ->
                 Log.i("CachingDepartmentsRepository", "refresh: $value")
+                Log.i("CachingDepartmentsRepository", "refresh: inserting departments")
                 for(department in value) {
-                    Log.i("CachingDepartmentsRepository", "refresh: $department")
+                    Log.i("CachingDepartmentsRepository", "refresh inserting: $department")
                     insertDepartment(department)
                 }
 
