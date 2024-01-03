@@ -60,10 +60,25 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
                 }
 
                 //todo max size check
-                for (i in uiState.value.currentLoadedIds .. uiState.value.currentLoadedIds + numberOfArtpieces) {
-                    viewModelScope.launch {
-                        Log.i("GET ID", "index $i")
-                        artpiecesRepository.refreshArtPiece(uiState.value.currentObjectIdList[i])
+                if (uiState.value.currentObjectIdList.size < uiState.value.currentLoadedIds + numberOfArtpieces){
+                    Log.i("GET ID", "not enough ids")
+                    artpieceApiState = ArtpieceApiState.Error
+                    return@launch
+                } else {
+                    Log.i("GET ID", "enough ids")
+
+                    for (i in uiState.value.currentLoadedIds .. uiState.value.currentLoadedIds + numberOfArtpieces) {
+                        viewModelScope.launch {
+                            Log.i("GET ID", "index $i")
+                            if (uiState.value.currentObjectIdList.size > i){
+                                artpiecesRepository.refreshArtPiece(uiState.value.currentObjectIdList[i])
+                            } else {
+                                Log.i("GET ID", "index $i is out of bounds")
+
+                            }
+
+
+                        }
                     }
                 }
 

@@ -52,6 +52,14 @@ fun ArtOverview(
                 LoadingScreen()
             }
             is ArtpieceApiState.Error -> {
+                IconButton(
+                    onClick = { onBack() },
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = stringResource(id = R.string.back),
+                    )
+                }
                 ErrorScreen()
             }
             is ArtpieceApiState.Success -> {
