@@ -54,7 +54,7 @@ class CachingDepartmentsRepository(
     private val departmentApiService: DepartmentApiService
 ): DepartmentsRepository {
 
-    //this repo contains logic to refresh the tasks (remote)
+    //this repo contains logic to refresh the departments (remote)
     //sometimes that logic is written in a 'usecase'
     override fun getDepartments(): Flow<List<Department>> {
         return departmentDao.getAllDepartments().map {

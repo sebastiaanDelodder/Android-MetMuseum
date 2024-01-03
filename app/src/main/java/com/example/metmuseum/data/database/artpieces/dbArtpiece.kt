@@ -15,7 +15,7 @@ data class dbArtpiece (
     var title: String = "",
 )
 
-fun dbArtpiece.asDomainDepartment(): Artpiece {
+fun dbArtpiece.asDomainArtpiece(): Artpiece {
     return Artpiece(
         objectID = this.objectID,
         isPublicDomain = this.isPublicDomain,
@@ -25,7 +25,7 @@ fun dbArtpiece.asDomainDepartment(): Artpiece {
     )
 }
 
-fun Artpiece.asDbDepartment(): dbArtpiece {
+fun Artpiece.asDbArtpiece(): dbArtpiece {
     return dbArtpiece(
         objectID = this.objectID,
         isPublicDomain = this.isPublicDomain,
@@ -35,7 +35,7 @@ fun Artpiece.asDbDepartment(): dbArtpiece {
     )
 }
 
-fun List<dbArtpiece>.asDomainDepartments(): List<Artpiece>{
+fun List<dbArtpiece>.asDomainArtpieces(): List<Artpiece>{
     var artpieceList = this.map {
         Artpiece(
             objectID = it.objectID,
