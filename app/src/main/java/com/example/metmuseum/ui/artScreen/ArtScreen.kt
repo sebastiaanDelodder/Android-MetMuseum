@@ -1,5 +1,6 @@
 package com.example.metmuseum.ui.artScreen
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
@@ -28,6 +29,7 @@ fun ArtScreen(
     modifier : Modifier = Modifier,
     artScreenViewModel: ArtScreenViewModel = viewModel()
 ) {
+    Log.i("vm inspection", "ArtScreen composition")
     val artScreenState by artScreenViewModel.uiState.collectAsState()
 
     Surface(

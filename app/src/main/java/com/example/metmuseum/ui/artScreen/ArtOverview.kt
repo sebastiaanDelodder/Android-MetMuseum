@@ -1,5 +1,6 @@
 package com.example.metmuseum.ui.artScreen
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -18,8 +19,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.metmuseum.R
 import com.example.metmuseum.model.Department
-import com.example.metmuseum.ui.artScreen.viewModels.ArtOverviewModel
+import com.example.metmuseum.ui.artScreen.state.ArtpieceApiState
+import com.example.metmuseum.ui.artScreen.viewModels.ArtOverviewViewModel
 import com.example.metmuseum.ui.components.ArtScreenColumn
+import com.example.metmuseum.ui.components.ErrorScreen
+import com.example.metmuseum.ui.components.LoadingScreen
 import com.example.metmuseum.ui.components.Searchbar
 
 @Composable
@@ -27,30 +31,57 @@ fun ArtOverview(
     department: Department,
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
-    artOverviewModel: ArtOverviewModel = viewModel()
+    artOverviewViewModel: ArtOverviewViewModel = viewModel(factory = ArtOverviewViewModel.Factory)
 ) {
-    val artOverviewState by artOverviewModel.uiState.collectAsState()
+    Log.i("vm inspection", "ArtOverview composition")
+    val artOverviewState by artOverviewViewModel.uiState.collectAsState()
+
+    Log.i("ArtOverview", "Initializing department to $department")
+    artOverviewViewModel.changeDepartment(department)
+
+    //use the ApiState
+    val artpieceApiState = artOverviewViewModel.artpieceApiState
+
+    val artpieceListState by artOverviewViewModel.uiListState.collectAsState()
 
     Column {
-        IconButton(
-            onClick = { onBack() },
-        ) {
-            Icon(
-                imageVector = Icons.Default.ArrowBack,
-                contentDescription = stringResource(id = R.string.back),
-            )
+        when(artpieceApiState) {
+            is ArtpieceApiState.Loading -> {
+                LoadingScreen()
+            }
+            is ArtpieceApiState.Error -> {
+                IconButton(
+                    onClick = { onBack() },
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = stringResource(id = R.string.back),
+                    )
+                }
+                ErrorScreen()
+            }
+            is ArtpieceApiState.Success -> {
+                IconButton(
+                    onClick = { onBack() },
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = stringResource(id = R.string.back),
+                    )
+                }
+                Text(text = "Department: " + department.displayName)
+                Searchbar(
+                    search = artOverviewState.search,
+                    onValueChange = { artOverviewViewModel.changeSearch(it) },
+                    modifier = modifier
+                        .padding(dimensionResource(id = R.dimen.padding_large))
+                )
+                Text(text = "Search: " + artOverviewState.search)
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.size_large)))
+                ArtScreenColumn(
+                    artpieces = artpieceListState.artpieces,
+                    modifier = modifier)
+            }
         }
-        Text(text = "Department: " + department.displayName)
-        Searchbar(
-            search = artOverviewState.search,
-            onValueChange = { artOverviewModel.changeSearch(it) },
-            modifier = modifier
-                .padding(dimensionResource(id = R.dimen.padding_large))
-        )
-        Text(text = "Search: " + artOverviewState.search)
-        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.size_large)))
-        ArtScreenColumn(
-            artpieces = artOverviewState.currentArtPieces,
-            modifier = modifier)
     }
 }

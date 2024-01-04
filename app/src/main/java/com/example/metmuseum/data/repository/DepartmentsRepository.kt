@@ -6,9 +6,9 @@ import com.example.metmuseum.data.database.departments.asDbDepartment
 import com.example.metmuseum.data.database.departments.asDomainDepartment
 import com.example.metmuseum.data.database.departments.asDomainDepartments
 import com.example.metmuseum.model.Department
-import com.example.metmuseum.network.DepartmentApiService
+import com.example.metmuseum.network.services.DepartmentApiService
 import com.example.metmuseum.network.asDomainObjects
-import com.example.metmuseum.network.getDepartmentsAsFlow
+import com.example.metmuseum.network.services.getDepartmentsAsFlow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
@@ -54,7 +54,7 @@ class CachingDepartmentsRepository(
     private val departmentApiService: DepartmentApiService
 ): DepartmentsRepository {
 
-    //this repo contains logic to refresh the tasks (remote)
+    //this repo contains logic to refresh the departments (remote)
     //sometimes that logic is written in a 'usecase'
     override fun getDepartments(): Flow<List<Department>> {
         return departmentDao.getAllDepartments().map {
@@ -62,6 +62,7 @@ class CachingDepartmentsRepository(
         }.onEach {
             //todo: check when refresh is called (why duplicates??)
             if(it.isEmpty()){
+                Log.i("CachingDepartmentsRepository", "getDepartments")
                 refresh()
             }
         }
@@ -89,9 +90,9 @@ class CachingDepartmentsRepository(
         try {
             departmentApiService.getDepartmentsAsFlow().asDomainObjects().collect {
                     value ->
-                Log.i("CachingDepartmentsRepository", "refresh: $value")
+                Log.i("CachingDepartmentsRepository", "Refresh: $value")
+                Log.i("CachingDepartmentsRepository", "Refresh: inserting departments")
                 for(department in value) {
-                    Log.i("CachingDepartmentsRepository", "refresh: $department")
                     insertDepartment(department)
                 }
 
@@ -100,8 +101,7 @@ class CachingDepartmentsRepository(
         catch(e: SocketTimeoutException){
             //log something
             //TODO
-            Log.e("API", "refresh: "+e.stackTraceToString(), )
+            Log.e("CachingDepartmentsRepository", "Refresh: " +e.stackTraceToString(), )
         }
-
     }
 }
