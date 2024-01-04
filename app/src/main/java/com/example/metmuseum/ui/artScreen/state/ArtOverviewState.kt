@@ -9,6 +9,7 @@ data class ArtOverviewState(
     var currentObjectIdList: List<Int> = listOf(),
     var currentLoadedIds: Int = 0,
     var selectedArtpiece : Artpiece? = null,
+    var currentScrollTo: Int =0,
 )
 
 data class ArtpieceListState(

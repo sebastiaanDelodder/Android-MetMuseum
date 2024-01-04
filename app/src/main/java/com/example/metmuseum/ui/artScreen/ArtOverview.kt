@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Icon
@@ -25,7 +25,6 @@ import com.example.metmuseum.ui.components.ArtDetail
 import com.example.metmuseum.ui.components.ArtScreenColumn
 import com.example.metmuseum.ui.components.ErrorScreen
 import com.example.metmuseum.ui.components.LoadingScreen
-import com.example.metmuseum.ui.components.Searchbar
 
 @Composable
 fun ArtOverview(
@@ -44,6 +43,10 @@ fun ArtOverview(
     val artpieceApiState = artOverviewViewModel.artpieceApiState
 
     val artpieceListState by artOverviewViewModel.uiListState.collectAsState()
+
+    val lazyListState = rememberLazyListState()
+
+    //TODO: WHEN OFFLINE NEW DEP -> EMPTY LIST: NO INTERNET
 
     Column {
         when(artpieceApiState) {
@@ -77,7 +80,11 @@ fun ArtOverview(
                     ArtScreenColumn(
                         artpieces = artpieceListState.artpieces,
                         onArtpieceClick = { artOverviewViewModel.setArtpiece(it) },
-                        modifier = modifier
+                        modifier = modifier,
+                        lazyListState = lazyListState,
+                        currentIndex = artOverviewState.currentScrollTo,
+                        loadMore = { artOverviewViewModel.loadMore(lazyListState.firstVisibleItemIndex) },
+                        setLastLoaded = { artOverviewViewModel.setLastLoaded(it) }
                     )
                 } else {
                     Log.i("ArtOverview", "selectedArtpiece is ${artOverviewState.selectedArtpiece}")

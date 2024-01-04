@@ -116,6 +116,7 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
                 currentState.copy(
                     department = department,
                     currentLoadedIds = 0,
+                    currentScrollTo = 0
                 )
             }
 
@@ -127,11 +128,18 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
                 currentState.copy(
                     department = department,
                     currentLoadedIds = 0,
+                    currentScrollTo = 0
                 )
             }
             getRepoArtpieces(40)
         } else if (uiState.value.department != null && uiState.value.department!!.departmentId == department.departmentId){
             Log.i("Change dep", "SAME DEPARTMENT")
+            _uiState.update {
+                    currentState ->
+                currentState.copy(
+                    currentScrollTo = 0
+                )
+            }
         }
     }
 
@@ -143,6 +151,70 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
             )
         }
     }
+
+    fun loadMore(firstVisibleItemIndex: Int) {
+        artpieceApiState = ArtpieceApiState.Loading
+        try {
+            viewModelScope.launch {
+                //todo max size check
+                if (uiState.value.currentObjectIdList.size < uiState.value.currentLoadedIds + 20){
+                    //artpieceApiState = ArtpieceApiState.Error
+                    return@launch
+                } else {
+                    for (i in uiState.value.currentLoadedIds .. uiState.value.currentLoadedIds + 20) {
+                        viewModelScope.launch {
+                            if (uiState.value.currentObjectIdList.size > i){
+                                artpiecesRepository.refreshArtPiece(uiState.value.currentObjectIdList[i])
+                            } else {
+                                Log.i("GET ID", "index $i is out of bounds")
+
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+            //artpieceApiState = ArtpieceApiState.Success
+            uiListState = artpiecesRepository.getArtpieces(uiState.value.department!!).map {
+                _uiState.update {
+                        currentState ->
+                    currentState.copy(
+                        currentLoadedIds = currentState.currentLoadedIds + 20,
+                        currentScrollTo = firstVisibleItemIndex
+                    )
+                }
+                ArtpieceListState(it)
+            }
+                .stateIn(
+                    scope = viewModelScope,
+                    started = SharingStarted.WhileSubscribed(5_000L),
+                    initialValue = ArtpieceListState()
+                )
+
+            artpieceApiState = ArtpieceApiState.Success
+        }
+        catch (e: IOException){
+            //show a toast? save a log on firebase? ...
+            //set the error state
+            //TODO
+            artpieceApiState = ArtpieceApiState.Error
+        } catch (e: Error){
+            //show a toast? save a log on firebase? ...
+            //set the error state
+            //TODO
+            artpieceApiState = ArtpieceApiState.Error
+        }
+    }
+
+    fun setLastLoaded(index: Int) {
+        _uiState.update { currentState ->
+            currentState.copy(
+                currentLoadedIds = index
+            ) }
+    }
+
 
     //object to tell the android framework how to handle the parameter of the viewmodel
     companion object {

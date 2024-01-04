@@ -11,28 +11,37 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.metmuseum.R
 import com.example.metmuseum.data.ArtpieceSampler
 import com.example.metmuseum.model.Artpiece
-import com.example.metmuseum.model.Department
+import kotlinx.coroutines.launch
 
 
 @Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
 @Composable
 fun ArtCardPrev() {
-    ArtScreenColumn(artpieces = ArtpieceSampler.getAll(), onArtpieceClick = {})
+    ArtScreenColumn(
+        artpieces = ArtpieceSampler.getAll(),
+        onArtpieceClick = {},
+        lazyListState = LazyListState(),
+        currentIndex = 0,
+        loadMore = {},
+        setLastLoaded = {}
+    )
 }
 
 @Composable
@@ -40,12 +49,16 @@ fun ArtScreenColumn(
     artpieces: List<Artpiece>,
     onArtpieceClick: (artpiece: Artpiece) -> Unit,
     modifier: Modifier = Modifier,
+    lazyListState: LazyListState,
+    currentIndex: Int,
+    loadMore: () -> Unit,
+    setLastLoaded: (Int) -> Unit
 ) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.spacing_large)),
         contentPadding = PaddingValues(horizontal = dimensionResource(id = R.dimen.padding_large)),
-        modifier = modifier
-
+        modifier = modifier,
+        state = lazyListState
     ) {
         items(artpieces) { item ->
             ArtCard(
@@ -53,6 +66,22 @@ fun ArtScreenColumn(
                 art = item,
                 onArtpieceClick = onArtpieceClick
             )
+            Text(text = lazyListState.firstVisibleItemIndex.toString())
+            //if last item on screen, load more
+            if (item == artpieces.last()) {
+                loadMore()
+            }
+        }
+    }
+
+    val coroutineScope = rememberCoroutineScope()
+
+    LaunchedEffect(currentIndex) {
+        if (currentIndex != 0) {
+            Log.i("ArtScreenColumn", "scrolling to $currentIndex")
+            coroutineScope.launch {
+                lazyListState.scrollToItem(currentIndex)
+            }
         }
     }
 }
