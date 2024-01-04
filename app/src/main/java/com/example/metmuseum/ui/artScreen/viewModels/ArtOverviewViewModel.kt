@@ -127,6 +127,30 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
 
     fun changeDepartment(department: Department){
         Log.i("Change dep", "CHANGING DEPARTMENT")
+
+        if (uiState.value.department == null){
+            _uiState.update {
+                    currentState ->
+                currentState.copy(
+                    department = department,
+                    currentLoadedIds = 0,
+                )
+            }
+
+            getRepoArtpieces(40)
+        } else if (uiState.value.department != null && uiState.value.department!!.departmentId != department.departmentId){
+            _uiState.update {
+                    currentState ->
+                currentState.copy(
+                    department = department,
+                    currentLoadedIds = 0,
+                )
+            }
+            getRepoArtpieces(40)
+        } else if (uiState.value.department != null && uiState.value.department!!.departmentId == department.departmentId){
+            Log.i("Change dep", "SAME DEPARTMENT")
+        }
+        /*
         if (uiState.value.department == null){
             Log.i("Change dep", "IS NULL")
             _uiState.update {
@@ -147,6 +171,8 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
             }
             getRepoArtpieces(40)
         }
+
+         */
     }
 
     //object to tell the android framework how to handle the parameter of the viewmodel
