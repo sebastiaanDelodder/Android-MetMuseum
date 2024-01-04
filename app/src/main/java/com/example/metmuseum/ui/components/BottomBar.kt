@@ -24,14 +24,14 @@ import com.example.metmuseum.R
 @Preview
 @Composable
 fun Nav() {
-    BottomBar(goHome = {}, goToArt = {}, goToFavorites = {}, selectedItem = 0, onItemSelected = {})
+    BottomBar(goHome = {}, goToArt = {}, selectedItem = 0, onItemSelected = {})
 }
 
 @Composable
 fun BottomBar(
     goHome: () -> Unit,
     goToArt: () -> Unit,
-    goToFavorites: () -> Unit,
+    //goToFavorites: () -> Unit,
     selectedItem : Int,
     onItemSelected: (Int) -> Unit,
     modifier: Modifier = Modifier
@@ -81,30 +81,6 @@ fun BottomBar(
             onClick = {
                 onItemSelected(1)
                 goToArt()
-            },
-            colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = MaterialTheme.colorScheme.onSurface,
-                indicatorColor = MaterialTheme.colorScheme.surface,
-                unselectedIconColor = MaterialTheme.colorScheme.onPrimary,
-            ),
-        )
-        NavigationBarItem(
-            icon = {
-                Icon(
-                    imageVector = Icons.Default.FavoriteBorder,
-                    contentDescription = null,
-                )
-            },
-            label = {
-                Text(
-                    text = stringResource(R.string.favorites),
-                    color = MaterialTheme.colorScheme.onPrimary
-                )
-            },
-            selected = selectedItem == 2,
-            onClick = {
-                onItemSelected(2)
-                goToFavorites()
             },
             colors = NavigationBarItemDefaults.colors(
                 selectedIconColor = MaterialTheme.colorScheme.onSurface,

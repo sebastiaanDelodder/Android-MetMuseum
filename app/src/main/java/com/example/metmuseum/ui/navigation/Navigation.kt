@@ -26,8 +26,11 @@ fun NavigationComponent(
         composable(route = Destinations.Art.name) {
             ArtScreen()
         }
+        /*
         composable(route = Destinations.Favorites.name) {
             FavoritesScreen()
         }
+
+         */
     }
 }

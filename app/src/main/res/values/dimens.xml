@@ -19,4 +19,7 @@
     <dimen name="card_size_min">68dp</dimen>
     <dimen name="card_size_max">100dp</dimen>
     <dimen name="textfield_min">56dp</dimen>
+    <dimen name="drawer_width">160dp</dimen>
+    <dimen name="drawer_padding_header">8dp</dimen>
+    <dimen name="drawer_padding_content">8dp</dimen>
 </resources>

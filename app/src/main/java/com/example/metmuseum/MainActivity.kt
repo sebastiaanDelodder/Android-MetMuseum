@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                             MetMuseumApp(NavigationType.NAVIGATION_RAIL)
                         }
                         WindowWidthSizeClass.Expanded -> {
-                            //MetMuseumApp(navigationType = TaskNavigationType.PERMANENT_NAVIGATION_DRAWER)
+                            MetMuseumApp(NavigationType.PERMANENT_NAVIGATION_DRAWER)
                         }
                         else -> {
                             MetMuseumApp(NavigationType.BOTTOM_NAVIGATION)
