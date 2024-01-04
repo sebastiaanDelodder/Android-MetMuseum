@@ -15,6 +15,7 @@ import com.example.metmuseum.model.Department
 import com.example.metmuseum.ui.artScreen.state.ArtOverviewState
 import com.example.metmuseum.ui.artScreen.state.ArtpieceApiState
 import com.example.metmuseum.ui.artScreen.state.ArtpieceListState
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -72,6 +73,7 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
                         viewModelScope.launch {
                             Log.i("GET ID", "index $i")
                             if (uiState.value.currentObjectIdList.size > i){
+                                Log.i("SMAAALLLl", "${uiState.value.currentObjectIdList}")
                                 artpiecesRepository.refreshArtPiece(uiState.value.currentObjectIdList[i])
                             } else {
                                 Log.i("GET ID", "index $i is out of bounds")
@@ -91,14 +93,17 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
                 }
             }
 
-            Log.i("TESTTTTT", "SOMETHING")
-
-            uiListState = artpiecesRepository.getArtpieces(uiState.value.department!!).map { ArtpieceListState(it) }
+            uiListState = artpiecesRepository.getArtpieces(uiState.value.department!!).map {
+                Log.i("UIT_LAUNCH" , "${it.size}")
+                ArtpieceListState(it)
+            }
                 .stateIn(
                     scope = viewModelScope,
                     started = SharingStarted.WhileSubscribed(5_000L),
                     initialValue = ArtpieceListState()
                 )
+
+            Log.i("SIZEEE NEWWW" , "${uiListState.value.artpieces.size}")
             artpieceApiState = ArtpieceApiState.Success
         }
         catch (e: IOException){
@@ -139,6 +144,7 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
 
             getRepoArtpieces(40)
         } else if (uiState.value.department != null && uiState.value.department!!.departmentId != department.departmentId){
+            Log.i("Change dep", "IS NEW DEPARTMENT")
             _uiState.update {
                     currentState ->
                 currentState.copy(

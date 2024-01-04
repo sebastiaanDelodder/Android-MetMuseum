@@ -79,6 +79,7 @@ fun ArtOverview(
                         .padding(dimensionResource(id = R.dimen.padding_large))
                 )
                 Text(text = "Search: " + artOverviewState.search)
+                Text(text = "Current Loaded Ids: " + artpieceListState.artpieces.size)
                 Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.size_large)))
                 ArtScreenColumn(
                     artpieces = artpieceListState.artpieces,

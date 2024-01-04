@@ -64,10 +64,16 @@ class CachingArtpiecesRepository(
     //this repo contains logic to refresh the departments (remote)
     //sometimes that logic is written in a 'usecase'
     override fun getArtpieces(department: Department): Flow<List<Artpiece>> {
-        return artpieceDao.getAllArtpieces(department.displayName).map {
+        //TODO
+        var stringCorrection = if (department.displayName == "American Decorative Arts") {
+            "The American Wing"
+        } else {
+            department.displayName
+        }
+        return artpieceDao.getAllArtpieces(stringCorrection).map {
             it.asDomainArtpieces()
         }.onEach {
-            Log.i("CachingArtpiecesRepository", "getArtpieces: $it")
+            Log.i("CachingArtpiecesRepo", "getArtpieces: $it")
             //todo: check when refresh is called (why duplicates??)
             if (it.isEmpty()) {
                 refresh(department.departmentId)
@@ -95,6 +101,7 @@ class CachingArtpiecesRepository(
 
     override suspend fun refresh(departmentId: Int): Flow<List<Int>> {
         try {
+            Log.i("CachingArtpiecesRepository", "REFRESSSSHIIIIIIIIIIIIIINNNNNNNNNNNNGGGGGGGGGGG AAAPIIII ")
             return artpieceApiService.getArtpiecesAsFlow(departmentId)
         } catch (e: SocketTimeoutException) {
             //log something

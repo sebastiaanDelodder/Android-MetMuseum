@@ -20,6 +20,7 @@ interface ArtpieceApiService {
 // helper function
 fun ArtpieceApiService.getArtpiecesAsFlow(departmentId: Int): Flow<List<Int>> = flow {
     try {
+        Log.i("ArtpieceApiService", "getArtpiecesAsFlow: departmentId = $departmentId")
         emit(getArtpieces(departmentId).objectIDs)
     }
     catch(e: Exception){
@@ -29,9 +30,10 @@ fun ArtpieceApiService.getArtpiecesAsFlow(departmentId: Int): Flow<List<Int>> = 
 
 fun ArtpieceApiService.getArtpieceAsFlow(objectId: Int): Flow<ApiArtpiece> = flow {
     try {
+        Log.i("ArtpieceApiService", "getArtpieceAsFlow: objectId = $objectId")
         emit(getArtpiece(objectId))
     }
     catch(e: Exception){
-        Log.e("ArtpieceApiService", "getArtpieceAsFlow: Could not connect to host")
+        Log.e("ArtpieceApiService", "getArtpieceAsFlow: ${e.stackTraceToString()}")
     }
 }
