@@ -2,6 +2,7 @@ package com.example.metmuseum.ui.components
 
 import android.util.Log
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -25,17 +26,19 @@ import androidx.compose.ui.unit.dp
 import com.example.metmuseum.R
 import com.example.metmuseum.data.ArtpieceSampler
 import com.example.metmuseum.model.Artpiece
+import com.example.metmuseum.model.Department
 
 
 @Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
 @Composable
 fun ArtCardPrev() {
-    ArtScreenColumn(artpieces = ArtpieceSampler.getAll())
+    ArtScreenColumn(artpieces = ArtpieceSampler.getAll(), onArtpieceClick = {})
 }
 
 @Composable
 fun ArtScreenColumn(
     artpieces: List<Artpiece>,
+    onArtpieceClick: (artpiece: Artpiece) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
@@ -47,7 +50,8 @@ fun ArtScreenColumn(
         items(artpieces) { item ->
             ArtCard(
                 modifier = modifier,
-                art = item
+                art = item,
+                onArtpieceClick = onArtpieceClick
             )
         }
     }
@@ -56,13 +60,15 @@ fun ArtScreenColumn(
 @Composable
 fun ArtCard(
     art : Artpiece,
+    onArtpieceClick: (artpiece: Artpiece) -> Unit,
     modifier : Modifier = Modifier
 ) {
     Surface (
         shape = MaterialTheme.shapes.medium,
         modifier = modifier
             //.padding(4.dp)
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable { onArtpieceClick(art) },
         color = MaterialTheme.colorScheme.secondaryContainer,
     ){
         Row(

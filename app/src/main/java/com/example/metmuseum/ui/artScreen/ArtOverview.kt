@@ -21,6 +21,7 @@ import com.example.metmuseum.R
 import com.example.metmuseum.model.Department
 import com.example.metmuseum.ui.artScreen.state.ArtpieceApiState
 import com.example.metmuseum.ui.artScreen.viewModels.ArtOverviewViewModel
+import com.example.metmuseum.ui.components.ArtDetail
 import com.example.metmuseum.ui.components.ArtScreenColumn
 import com.example.metmuseum.ui.components.ErrorScreen
 import com.example.metmuseum.ui.components.LoadingScreen
@@ -61,26 +62,30 @@ fun ArtOverview(
                 ErrorScreen()
             }
             is ArtpieceApiState.Success -> {
-                IconButton(
-                    onClick = { onBack() },
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.ArrowBack,
-                        contentDescription = stringResource(id = R.string.back),
+                if (artOverviewState.selectedArtpiece == null) {
+                    Log.i("ArtOverview", "selectedArtpiece is null")
+                    IconButton(
+                        onClick = { onBack() },
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = stringResource(id = R.string.back),
+                        )
+                    }
+                    Text(text = "Department: " + department.displayName)
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.size_large)))
+                    ArtScreenColumn(
+                        artpieces = artpieceListState.artpieces,
+                        onArtpieceClick = { artOverviewViewModel.setArtpiece(it) },
+                        modifier = modifier
+                    )
+                } else {
+                    Log.i("ArtOverview", "selectedArtpiece is ${artOverviewState.selectedArtpiece}")
+                    ArtDetail(
+                        artpiece = artOverviewState.selectedArtpiece!!,
+                        onBack = { artOverviewViewModel.setArtpiece(null) }
                     )
                 }
-                Text(text = "Department: " + department.displayName)
-                Searchbar(
-                    search = artOverviewState.search,
-                    onValueChange = { artOverviewViewModel.changeSearch(it) },
-                    modifier = modifier
-                        .padding(dimensionResource(id = R.dimen.padding_large))
-                )
-                Text(text = "Search: " + artOverviewState.search)
-                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.size_large)))
-                ArtScreenColumn(
-                    artpieces = artpieceListState.artpieces,
-                    modifier = modifier)
             }
         }
     }

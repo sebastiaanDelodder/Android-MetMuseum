@@ -8,6 +8,7 @@ data class ArtOverviewState(
     val search: String = "",
     var currentObjectIdList: List<Int> = listOf(),
     var currentLoadedIds: Int = 0,
+    var selectedArtpiece : Artpiece? = null,
 )
 
 data class ArtpieceListState(

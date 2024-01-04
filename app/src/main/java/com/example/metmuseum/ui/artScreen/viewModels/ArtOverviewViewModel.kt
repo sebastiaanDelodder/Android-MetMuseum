@@ -11,11 +11,11 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.metmuseum.Application
 import com.example.metmuseum.data.repository.ArtpiecesRepository
+import com.example.metmuseum.model.Artpiece
 import com.example.metmuseum.model.Department
 import com.example.metmuseum.ui.artScreen.state.ArtOverviewState
 import com.example.metmuseum.ui.artScreen.state.ArtpieceApiState
 import com.example.metmuseum.ui.artScreen.state.ArtpieceListState
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -132,6 +132,15 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
             getRepoArtpieces(40)
         } else if (uiState.value.department != null && uiState.value.department!!.departmentId == department.departmentId){
             Log.i("Change dep", "SAME DEPARTMENT")
+        }
+    }
+
+    fun setArtpiece(artpiece: Artpiece?) {
+        _uiState.update {
+            currentState ->
+            currentState.copy(
+                selectedArtpiece = artpiece
+            )
         }
     }
 
