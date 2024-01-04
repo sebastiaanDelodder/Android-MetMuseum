@@ -1,7 +1,7 @@
 package com.example.metmuseum.network.items
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
 
 @Serializable
 data class ApiMeasurement (
@@ -21,4 +21,5 @@ data class ApiElementMeasurements (
     val Thickness: Double? = null,
     val Circumference: Double? = null,
     val Rim: Double? = null,
+    @SerialName("Length at CB") val CB: Double? = null,
 ) {}

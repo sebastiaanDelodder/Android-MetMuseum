@@ -41,46 +41,27 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
         private set
 
 
-
-    /*
-    init {
-        // initialize the uiListState
-        Log.i("TESTTTT", "INIT")
-        //getRepoArtpieces(0)
-        Log.i("vm inspection", "ArtpieceViewModel init")
-    }*/
-
-
     private fun getRepoArtpieces(numberOfArtpieces: Int){
         try {
             viewModelScope.launch {
                 artpiecesRepository.refresh(uiState.value.department!!.departmentId).collect {
-                    Log.i("vm inspection", "collecting")
                     uiState.value.currentObjectIdList = it.sorted()
-                    Log.i("vm inspection", "${uiState.value.currentObjectIdList.size}")
+                    Log.i("ArtOverviewViewModel", "Total collected ID's: ${uiState.value.currentObjectIdList.size}")
                 }
 
                 //todo max size check
                 if (uiState.value.currentObjectIdList.size < uiState.value.currentLoadedIds + numberOfArtpieces){
-                    Log.i("GET ID", "not enough ids")
-                    Log.i("GET ID", "${uiState.value.currentObjectIdList.size}")
                     artpieceApiState = ArtpieceApiState.Error
                     return@launch
                 } else {
-                    Log.i("GET ID", "enough ids")
-
                     for (i in uiState.value.currentLoadedIds .. uiState.value.currentLoadedIds + numberOfArtpieces) {
                         viewModelScope.launch {
-                            Log.i("GET ID", "index $i")
                             if (uiState.value.currentObjectIdList.size > i){
-                                Log.i("SMAAALLLl", "${uiState.value.currentObjectIdList}")
                                 artpiecesRepository.refreshArtPiece(uiState.value.currentObjectIdList[i])
                             } else {
                                 Log.i("GET ID", "index $i is out of bounds")
 
                             }
-
-
                         }
                     }
                 }
@@ -94,7 +75,6 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
             }
 
             uiListState = artpiecesRepository.getArtpieces(uiState.value.department!!).map {
-                Log.i("UIT_LAUNCH" , "${it.size}")
                 ArtpieceListState(it)
             }
                 .stateIn(
@@ -103,20 +83,17 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
                     initialValue = ArtpieceListState()
                 )
 
-            Log.i("SIZEEE NEWWW" , "${uiListState.value.artpieces.size}")
             artpieceApiState = ArtpieceApiState.Success
         }
         catch (e: IOException){
             //show a toast? save a log on firebase? ...
             //set the error state
             //TODO
-            Log.e("vm inspection", "$e")
             artpieceApiState = ArtpieceApiState.Error
         } catch (e: Error){
             //show a toast? save a log on firebase? ...
             //set the error state
             //TODO
-            Log.e("vm inspection", "$e")
             artpieceApiState = ArtpieceApiState.Error
         }
     }
@@ -156,29 +133,6 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
         } else if (uiState.value.department != null && uiState.value.department!!.departmentId == department.departmentId){
             Log.i("Change dep", "SAME DEPARTMENT")
         }
-        /*
-        if (uiState.value.department == null){
-            Log.i("Change dep", "IS NULL")
-            _uiState.update {
-                    currentState ->
-                currentState.copy(
-                    department = department
-                )
-            }
-            getRepoArtpieces(40)
-        } else if (uiState.value.department!!.departmentId != department.departmentId){
-            Log.i("Change dep", "IS NEW DEPARTMENT")
-            _uiState.update {
-                    currentState ->
-                currentState.copy(
-                    department = department,
-                    currentLoadedIds = 0,
-                )
-            }
-            getRepoArtpieces(40)
-        }
-
-         */
     }
 
     //object to tell the android framework how to handle the parameter of the viewmodel
@@ -188,7 +142,6 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
             initializer {
                 val application = (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as Application)
                 val artpiecesRepository = application.container.artpiecesRepository
-                Log.i("TESTTTTT", "FACTORYYYYY")
                 ArtOverviewViewModel(
                     artpiecesRepository = artpiecesRepository
                 )

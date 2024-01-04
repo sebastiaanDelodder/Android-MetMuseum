@@ -67,9 +67,18 @@ class CachingArtpiecesRepository(
         //TODO
         var stringCorrection = if (department.displayName == "American Decorative Arts") {
             "The American Wing"
+        } else if (department.displayName == "Arts of Africa, Oceania, and the Americas") {
+            "The Michael C. Rockefeller Wing"
+        } else if (department.displayName == "The Costume Institute") {
+            "Costume Institute"
+        } else if (department.displayName == "The Robert Lehman Collection") {
+            "Robert Lehman Collection"
+        } else if (department.displayName == "Modern Art"){
+            "Modern and Contemporary Art"
         } else {
             department.displayName
         }
+
         return artpieceDao.getAllArtpieces(stringCorrection).map {
             it.asDomainArtpieces()
         }.onEach {
@@ -101,15 +110,15 @@ class CachingArtpiecesRepository(
 
     override suspend fun refresh(departmentId: Int): Flow<List<Int>> {
         try {
-            Log.i("CachingArtpiecesRepository", "REFRESSSSHIIIIIIIIIIIIIINNNNNNNNNNNNGGGGGGGGGGG AAAPIIII ")
+            Log.i("CachingArtpiecesRepository", "Refresh: departmentId = $departmentId")
             return artpieceApiService.getArtpiecesAsFlow(departmentId)
         } catch (e: SocketTimeoutException) {
             //log something
             //TODO
-            Log.e("API", "refresh: " + e.stackTraceToString(),)
+            Log.e("CachingArtpiecesRepository", "Refresh: departmentId = $departmentId Error:" + e.stackTraceToString(),)
             throw e
         } catch (e: Exception) {
-            Log.e("API", "refresh: " + e.stackTraceToString(),)
+            Log.e("CachingArtpiecesRepository", "Refresh: departmentId = $departmentId Error:" + e.stackTraceToString(),)
             throw e
         }
     }
@@ -117,13 +126,13 @@ class CachingArtpiecesRepository(
     override suspend fun refreshArtPiece(objectId: Int) {
         try {
             artpieceApiService.getArtpieceAsFlow(objectId).asDomainObject().collect { value ->
-                Log.i("CachingArtpiecesRepository", "refresh: $value")
+                Log.i("CachingArtpiecesRepository", "Refresh: Artpiece $value")
                 insertArtpiece(value)
             }
         } catch (e: SocketTimeoutException) {
             //log something
             //TODO
-            Log.e("API", "refresh: " + e.stackTraceToString(),)
+            Log.e("CachingArtpiecesRepository", "Refresh: Artpiece Error: " + e.stackTraceToString(),)
         }
     }
 }

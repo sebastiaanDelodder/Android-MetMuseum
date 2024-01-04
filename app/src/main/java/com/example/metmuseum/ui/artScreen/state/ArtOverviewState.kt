@@ -4,7 +4,6 @@ import com.example.metmuseum.model.Artpiece
 import com.example.metmuseum.model.Department
 
 data class ArtOverviewState(
-    //val currentArtPieces: List<Artpiece>,
     val department: Department? = null,
     val search: String = "",
     var currentObjectIdList: List<Int> = listOf(),

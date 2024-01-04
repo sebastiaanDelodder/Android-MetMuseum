@@ -90,10 +90,9 @@ class CachingDepartmentsRepository(
         try {
             departmentApiService.getDepartmentsAsFlow().asDomainObjects().collect {
                     value ->
-                Log.i("CachingDepartmentsRepository", "refresh: $value")
-                Log.i("CachingDepartmentsRepository", "refresh: inserting departments")
+                Log.i("CachingDepartmentsRepository", "Refresh: $value")
+                Log.i("CachingDepartmentsRepository", "Refresh: inserting departments")
                 for(department in value) {
-                    Log.i("CachingDepartmentsRepository", "refresh inserting: $department")
                     insertDepartment(department)
                 }
 
@@ -102,7 +101,7 @@ class CachingDepartmentsRepository(
         catch(e: SocketTimeoutException){
             //log something
             //TODO
-            Log.e("API", "refresh: "+e.stackTraceToString(), )
+            Log.e("CachingDepartmentsRepository", "Refresh: " +e.stackTraceToString(), )
         }
     }
 }

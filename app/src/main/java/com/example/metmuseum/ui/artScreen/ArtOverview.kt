@@ -36,16 +36,14 @@ fun ArtOverview(
     Log.i("vm inspection", "ArtOverview composition")
     val artOverviewState by artOverviewViewModel.uiState.collectAsState()
 
-    Log.i("current department", artOverviewState.department.toString())
-    //todo equals doesnt work
+    Log.i("ArtOverview", "Initializing department to $department")
     artOverviewViewModel.changeDepartment(department)
-
-    val artpieceListState by artOverviewViewModel.uiListState.collectAsState()
 
     //use the ApiState
     val artpieceApiState = artOverviewViewModel.artpieceApiState
 
-    Log.i("TESTINGGGGG SIZE", "${artOverviewState.currentObjectIdList.size}")
+    val artpieceListState by artOverviewViewModel.uiListState.collectAsState()
+
     Column {
         when(artpieceApiState) {
             is ArtpieceApiState.Loading -> {
@@ -79,7 +77,6 @@ fun ArtOverview(
                         .padding(dimensionResource(id = R.dimen.padding_large))
                 )
                 Text(text = "Search: " + artOverviewState.search)
-                Text(text = "Current Loaded Ids: " + artpieceListState.artpieces.size)
                 Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.size_large)))
                 ArtScreenColumn(
                     artpieces = artpieceListState.artpieces,

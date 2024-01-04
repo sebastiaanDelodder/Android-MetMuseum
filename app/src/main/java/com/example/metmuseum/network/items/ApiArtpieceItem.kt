@@ -15,18 +15,3 @@ data class ApiArtpieceItem (
     val objectIDs: List<Int>
 ){}
 
-fun Flow<ApiArtpieceItem>.asDomainObjects(): Flow<List<Artpiece>> {
-    return this.map { value ->
-        value.objectIDs.map {
-            Artpiece(
-                objectID = it,
-                isPublicDomain = false,
-                primaryImage = "",
-                primaryImageSmall = "",
-                title = "",
-                department = ""
-            )
-        }
-    }
-}
-
