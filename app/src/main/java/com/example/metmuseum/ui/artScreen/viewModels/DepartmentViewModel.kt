@@ -52,12 +52,17 @@ class DepartmentViewModel(private val departmentsRepository: DepartmentsReposito
         try {
             viewModelScope.launch { departmentsRepository.refresh() }
 
-            uiListState = departmentsRepository.getDepartments().map { DepartmentListState(it) }
+            uiListState = departmentsRepository.getDepartments().map {
+                Log.i("vm inspection", "DONE")
+                DepartmentListState(it)
+            }
                 .stateIn(
                     scope = viewModelScope,
                     started = SharingStarted.WhileSubscribed(5_000L),
                     initialValue = DepartmentListState()
                 )
+            Log.i("vm inspection", "DepartmentViewModel getRepoDepartments")
+            Log.i("vm inspection", uiListState.value.departments.toString())
 
             departmentApiState = DepartmentApiState.Success
         }
