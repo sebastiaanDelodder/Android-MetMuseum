@@ -91,28 +91,6 @@ fun SideBarApp(
                     unselectedIconColor = MaterialTheme.colorScheme.onPrimary,
                 ),
             )
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_medium)))
-            NavigationRailItem(
-                icon = {
-                    Icon(
-                        imageVector = Icons.Default.FavoriteBorder,
-                        contentDescription = null,
-                    )
-                },
-                label = {
-                    Text(
-                        text = stringResource(R.string.favorites),
-                        color = MaterialTheme.colorScheme.onPrimary
-                    )
-                },
-                selected = false,
-                onClick = {},
-                colors = NavigationRailItemDefaults.colors(
-                    selectedIconColor = MaterialTheme.colorScheme.onSurface,
-                    indicatorColor = MaterialTheme.colorScheme.surface,
-                    unselectedIconColor = MaterialTheme.colorScheme.onPrimary,
-                ),
-            )
         }
     }
 }
