@@ -113,7 +113,7 @@ fun DepartmentCard(
                 textAlign = TextAlign.Center,
                 fontSize = 16.sp,
                 lineHeight = 16.sp,
-                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                color = MaterialTheme.colorScheme.onSecondaryContainer
             )
         }
     }

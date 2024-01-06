@@ -5,23 +5,18 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
-import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import com.example.metmuseum.R
 import com.example.metmuseum.ui.MetMuseumApp
-import com.example.metmuseum.ui.navigation.Destinations
 import com.example.metmuseum.ui.util.NavigationType
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runBlockingTest
-import okhttp3.internal.wait
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class HomeScreenNavigationTest {
+class DepartmentScreenNavigationTest {
     /**
      * Note: To access to an empty activity, the code uses ComponentActivity instead of
      * MainActivity.
@@ -42,35 +37,53 @@ class HomeScreenNavigationTest {
     }
 
     @Test
-    fun metMuseumNavHost_verifyStartDestination() {
-        navController.assertCurrentRouteName(Destinations.Home.name)
-    }
+    fun metMuseumNavHost_navigateToArtOverviewScreen() {
+        navigateToArtScreen()
 
-    @Test
-    fun metMuseumNavHost_navigateToArtScreen() {
-        navigateToDepartmentsScreen()
-        navController.assertCurrentRouteName(Destinations.Art.name)
-    }
-
-    @Test
-    fun metMuseumNavHost_navigateToDepartmentsScreenAndBackToHome() {
-        navigateToDepartmentsScreen()
+        //DATA LOAD
+        loadWait()
 
         composeTestRule
-            .onNodeWithStringId(R.string.home).performClick()
-        navController.assertCurrentRouteName(Destinations.Home.name)
+            .onNodeWithText(
+                text= "Greek",
+                substring = true,
+            ).assertIsDisplayed()
     }
 
     @Test
-    fun metMuseumNavHost_contentsOnScreen_arePresent(){
+    fun metMuseumNavHost_navigateToArtOverviewScreenAndBackToDepartments() {
+        navigateToArtScreen()
+
+        //DATA LOAD
+        loadWait()
 
         composeTestRule
-            .onNodeWithContentDescription("Logo of the Met Museum")
-            .assertIsDisplayed()
+            .onNodeWithText(
+                text= "Greek",
+                substring = true,
+            ).performClick()
+
+        loadWait()
+
+        composeTestRule
+            .onNodeWithContentDescription("Back").performClick()
+
+        loadWait()
+        composeTestRule
+            .onNodeWithText(
+                text= "Greek",
+                substring = true,
+            ).assertIsDisplayed()
     }
 
-    private fun navigateToDepartmentsScreen() {
+    private fun navigateToArtScreen() {
         composeTestRule
             .onNodeWithStringId(R.string.art).performClick()
+    }
+
+    private fun loadWait(){
+        Thread.sleep(2000)
+        composeTestRule.waitForIdle()
+        Thread.sleep(2000)
     }
 }

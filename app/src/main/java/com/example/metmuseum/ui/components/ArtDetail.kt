@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -115,7 +116,7 @@ fun ArtDetail(
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.headlineMedium,
                 modifier = modifier
-                    .fillMaxWidth()
+                    .fillMaxSize()
                     .padding(
                         horizontal = dimensionResource(id = R.dimen.padding_large),
                     )
@@ -139,6 +140,10 @@ fun ArtDetail(
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Normal,
                     textAlign = TextAlign.End,
+                    modifier = modifier
+                        .widthIn(
+                            max = dimensionResource(id = R.dimen.width_text),
+                        )
                 )
             }
 
@@ -215,6 +220,10 @@ fun ArtistComponent(
                     text = artpiece.artistDisplayName,
                     style = MaterialTheme.typography.bodyMedium,
                     textAlign = TextAlign.End,
+                    modifier = modifier
+                        .widthIn(
+                            max = dimensionResource(id = R.dimen.width_text),
+                        )
                 )
             }
         }
@@ -232,6 +241,10 @@ fun ArtistComponent(
                     text = artpiece.artistNationality,
                     style = MaterialTheme.typography.bodyMedium,
                     textAlign = TextAlign.End,
+                    modifier = modifier
+                        .widthIn(
+                            max = dimensionResource(id = R.dimen.width_text),
+                        )
                 )
             }
         }
@@ -249,6 +262,10 @@ fun ArtistComponent(
                     text = artpiece.artistBeginDate,
                     style = MaterialTheme.typography.bodyMedium,
                     textAlign = TextAlign.End,
+                    modifier = modifier
+                        .widthIn(
+                            max = dimensionResource(id = R.dimen.width_text),
+                        )
                 )
             }
         }
@@ -266,6 +283,10 @@ fun ArtistComponent(
                     text = artpiece.artistEndDate,
                     style = MaterialTheme.typography.bodyMedium,
                     textAlign = TextAlign.End,
+                    modifier = modifier
+                        .widthIn(
+                            max = dimensionResource(id = R.dimen.width_text),
+                        )
                 )
             }
         }
@@ -303,6 +324,10 @@ fun ArtInfo(
                     text = artpiece.objectDate,
                     style = MaterialTheme.typography.bodyMedium,
                     textAlign = TextAlign.End,
+                    modifier = modifier
+                        .widthIn(
+                            max = dimensionResource(id = R.dimen.width_text),
+                        )
                 )
             }
         }
@@ -320,6 +345,10 @@ fun ArtInfo(
                     text = artpiece.medium,
                     style = MaterialTheme.typography.bodyMedium,
                     textAlign = TextAlign.End,
+                    modifier = modifier
+                        .widthIn(
+                            max = dimensionResource(id = R.dimen.width_text),
+                        )
                 )
             }
         }
@@ -378,6 +407,10 @@ fun GlobalInfo(
                     text = artpiece.country,
                     style = MaterialTheme.typography.bodyMedium,
                     textAlign = TextAlign.End,
+                    modifier = modifier
+                        .widthIn(
+                            max = dimensionResource(id = R.dimen.width_text),
+                        )
                 )
             }
         }
@@ -395,6 +428,10 @@ fun GlobalInfo(
                     text = artpiece.culture,
                     style = MaterialTheme.typography.bodyMedium,
                     textAlign = TextAlign.End,
+                    modifier = modifier
+                        .widthIn(
+                            max = dimensionResource(id = R.dimen.width_text),
+                        )
                 )
             }
         }
@@ -412,6 +449,10 @@ fun GlobalInfo(
                     text = artpiece.period,
                     style = MaterialTheme.typography.bodyMedium,
                     textAlign = TextAlign.End,
+                    modifier = modifier
+                        .widthIn(
+                            max = dimensionResource(id = R.dimen.width_text),
+                        )
                 )
             }
         }
@@ -429,6 +470,10 @@ fun GlobalInfo(
                     text = artpiece.dynasty,
                     style = MaterialTheme.typography.bodyMedium,
                     textAlign = TextAlign.End,
+                    modifier = modifier
+                        .widthIn(
+                            max = dimensionResource(id = R.dimen.width_text),
+                        )
                 )
             }
         }
@@ -446,6 +491,10 @@ fun GlobalInfo(
                     text = artpiece.galleryNumber,
                     style = MaterialTheme.typography.bodyMedium,
                     textAlign = TextAlign.End,
+                    modifier = modifier
+                        .widthIn(
+                            max = dimensionResource(id = R.dimen.width_text),
+                        )
                 )
             }
         }
