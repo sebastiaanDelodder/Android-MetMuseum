@@ -25,7 +25,7 @@ fun HomeScreen(
         modifier = modifier
             .padding(
                 vertical = dimensionResource(id = R.dimen.padding_large),
-                horizontal = dimensionResource(id = R.dimen.padding_large)
+                horizontal = dimensionResource(id = R.dimen.padding_xlarge)
             )
     ){
         item {

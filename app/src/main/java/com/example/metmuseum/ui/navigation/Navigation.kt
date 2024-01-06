@@ -6,8 +6,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.metmuseum.ui.artScreen.ArtScreen
-import com.example.metmuseum.ui.artScreen.DepartmentScreen
-import com.example.metmuseum.ui.favoritesScreen.FavoritesScreen
 import com.example.metmuseum.ui.homeScreen.HomeScreen
 
 @Composable

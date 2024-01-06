@@ -24,4 +24,5 @@
     <dimen name="drawer_padding_content">8dp</dimen>
     <dimen name="padding_xxlarge">32dp</dimen>
     <dimen name="padding_xxxlarge">40dp</dimen>
+    <dimen name="width_button">30dp</dimen>
 </resources>

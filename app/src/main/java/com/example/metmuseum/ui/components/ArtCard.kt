@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -46,7 +47,6 @@ fun ArtCardPrev() {
         lazyListState = LazyListState(),
         currentIndex = 0,
         loadMore = {},
-        setLastLoaded = {}
     )
 }
 
@@ -58,7 +58,6 @@ fun ArtScreenColumn(
     lazyListState: LazyListState,
     currentIndex: Int,
     loadMore: () -> Unit,
-    setLastLoaded: (Int) -> Unit
 ) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.spacing_large)),
@@ -130,7 +129,8 @@ fun ArtCard(
             Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.size_medium)))
             Text(
                 text = art.title,
-                color = MaterialTheme.colorScheme.onSecondaryContainer
+                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                maxLines = 3
             )
         }
     }
