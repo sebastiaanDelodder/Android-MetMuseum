@@ -12,6 +12,8 @@
     <dimen name="spacing_medium">8dp</dimen>
     <dimen name="spacing_large">16dp</dimen>
     <dimen name="spacing_xlarge">24dp</dimen>
+    <dimen name="spacing_xxlarge">32dp</dimen>
+    <dimen name="spacing_xxxlarge">40dp</dimen>
     <dimen name="img_size_small">40dp</dimen>
     <dimen name="img_size_medium">100dp</dimen>
     <dimen name="img_size_large">200dp</dimen>
@@ -22,4 +24,8 @@
     <dimen name="drawer_width">160dp</dimen>
     <dimen name="drawer_padding_header">8dp</dimen>
     <dimen name="drawer_padding_content">8dp</dimen>
+    <dimen name="padding_xxlarge">32dp</dimen>
+    <dimen name="padding_xxxlarge">40dp</dimen>
+    <dimen name="width_button">30dp</dimen>
+    <dimen name="width_text">250dp</dimen>
 </resources>

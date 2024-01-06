@@ -1,14 +1,12 @@
 package com.example.metmuseum.network
 
 import com.example.metmuseum.model.Artpiece
-import com.example.metmuseum.model.Department
 import com.example.metmuseum.network.items.ApiConstituent
 import com.example.metmuseum.network.items.ApiMeasurement
 import com.example.metmuseum.network.items.ApiTag
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
 
 @Serializable
 data class ApiArtpiece(
@@ -81,10 +79,21 @@ fun Flow<ApiArtpiece>.asDomainObject(): Flow<Artpiece> {
 fun ApiArtpiece.asDomainObject(): Artpiece {
     return Artpiece(
         objectID = this.objectID,
-        isPublicDomain = this.isPublicDomain,
-        primaryImage = this.primaryImage,
         primaryImageSmall = this.primaryImageSmall,
         title = this.title,
-        department = this.department
+        department = this.department,
+        artistDisplayName = this.artistDisplayName,
+        artistNationality = this.artistNationality,
+        artistBeginDate = this.artistBeginDate,
+        artistEndDate = this.artistEndDate,
+        objectDate = this.objectDate,
+        medium = this.medium,
+        dimensions = this.dimensions,
+        country = this.country,
+        culture = this.culture,
+        period = this.period,
+        dynasty = this.dynasty,
+        publicDomain = this.isPublicDomain,
+        galleryNumber = this.GalleryNumber,
     )
 }

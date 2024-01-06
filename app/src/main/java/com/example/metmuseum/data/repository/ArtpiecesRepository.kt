@@ -82,7 +82,7 @@ class CachingArtpiecesRepository(
         return artpieceDao.getAllArtpieces(stringCorrection).map {
             it.asDomainArtpieces()
         }.onEach {
-            Log.i("CachingArtpiecesRepo", "getArtpieces: $it")
+            //Log.i("CachingArtpiecesRepo", "getArtpieces: $it")
             //todo: check when refresh is called (why duplicates??)
             if (it.isEmpty()) {
                 refresh(department.departmentId)

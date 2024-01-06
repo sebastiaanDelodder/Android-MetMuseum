@@ -93,7 +93,6 @@ fun MetMuseumApp(
                 TopBar(
                     title = when (selectedNavItem) {
                         1 -> R.string.art
-                        2 -> R.string.favorites
                         else -> R.string.museum
                     },
                 )
@@ -128,7 +127,6 @@ fun MetMuseumApp(
                     TopBar(
                         title = when (selectedNavItem) {
                             1 -> R.string.art
-                            2 -> R.string.favorites
                             else -> R.string.museum
                         },
                     )

@@ -1,25 +1,61 @@
 package com.example.metmuseum.ui.homeScreen
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.metmuseum.R
 
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier
 ) {
-    Text(
-        modifier = modifier.padding(8.dp),
-        text =
-        """
-                    
-        Welcome to The Metropolitan Museum of Art's mobile app—an immersive gateway to the world of art at your fingertips. Unleash the power of discovery as you embark on a journey through millennia of creativity and culture. Our app is your personalized guide to navigating the vast treasures housed within the museum's hallowed halls.
-
-        Explore the app's user-friendly interface designed to effortlessly locate your favorite artworks or unearth hidden gems. Whether you're a seasoned art enthusiast or a curious newcomer, our search features ensure a seamless experience.
-
-        Immerse yourself in the art world like never before. From ancient artifacts to contemporary masterpieces, The Met's mobile app is your key to unlocking the beauty, history, and inspiration that lie within the museum's unparalleled collection. Start your art adventure today!
-        """.trimIndent(),
-    )
+    LazyColumn(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier
+            .padding(
+                vertical = dimensionResource(id = R.dimen.padding_large),
+                horizontal = dimensionResource(id = R.dimen.padding_xlarge)
+            )
+    ){
+        item {
+            Spacer(modifier = Modifier.height(
+                dimensionResource(id = R.dimen.padding_xlarge)
+            ))
+            Image(
+                painter = painterResource(id = R.drawable.logohome),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(dimensionResource(id = R.dimen.img_size_medium))
+            )
+            Spacer(modifier = Modifier.height(
+                dimensionResource(id = R.dimen.padding_xxxlarge)
+            ))
+            Text(
+                text = stringResource(id = R.string.home_par1),
+            )
+            Spacer(modifier = Modifier.height(
+                dimensionResource(id = R.dimen.padding_large)
+            ))
+            Text(
+                text = stringResource(id = R.string.home_par2),
+            )
+            Spacer(modifier = Modifier.height(
+                dimensionResource(id = R.dimen.padding_large)
+            ))
+            Text(
+                text = stringResource(id = R.string.home_par3),
+            )
+        }
+    }
 }
