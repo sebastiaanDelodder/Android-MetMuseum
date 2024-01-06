@@ -34,7 +34,7 @@ fun HomeScreen(
             ))
             Image(
                 painter = painterResource(id = R.drawable.logohome),
-                contentDescription = null,
+                contentDescription = "Logo of the Met Museum",
                 modifier = Modifier
                     .size(dimensionResource(id = R.dimen.img_size_medium))
             )

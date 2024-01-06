@@ -44,7 +44,7 @@ fun BottomBar(
             icon = {
                 Icon(
                     imageVector = Icons.Default.Home,
-                    contentDescription = null,
+                    contentDescription = "Navigate to Home",
                 )
             },
             label = {
@@ -68,7 +68,7 @@ fun BottomBar(
             icon = {
                 Icon(
                     imageVector = Icons.Outlined.ImportContacts,
-                    contentDescription = null,
+                    contentDescription = "Navigate to Art",
                 )
             },
             label = {
