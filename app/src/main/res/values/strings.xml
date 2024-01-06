@@ -9,4 +9,5 @@
     <string name="loading">Loading&#8230;</string>
     <string name="loading_failed">Failed to load</string>
     <string name="navigation_rail">Navigate between items here</string>
+    <string name="image_description">Image of artpiece</string>
 </resources>

@@ -79,6 +79,9 @@ dependencies {
     // To use Kotlin Symbol Processing (KSP)
     ksp("androidx.room:room-compiler:$room_version")
 
+    // Coil
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
