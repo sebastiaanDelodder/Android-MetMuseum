@@ -34,6 +34,6 @@ fun ArtpieceApiService.getArtpieceAsFlow(objectId: Int): Flow<ApiArtpiece> = flo
         emit(getArtpiece(objectId))
     }
     catch(e: Exception){
-        Log.e("ArtpieceApiService", "getArtpieceAsFlow: Could not connect to host")
+        Log.e("ArtpieceApiService", e.stackTraceToString())
     }
 }

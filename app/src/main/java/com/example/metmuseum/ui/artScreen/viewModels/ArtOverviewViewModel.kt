@@ -111,6 +111,7 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
         Log.i("Change dep", "CHANGING DEPARTMENT")
 
         if (uiState.value.department == null){
+            Log.i("Change dep", "IS NULL")
             _uiState.update {
                     currentState ->
                 currentState.copy(
@@ -137,9 +138,10 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
             _uiState.update {
                     currentState ->
                 currentState.copy(
-                    currentScrollTo = 0
+                    //currentScrollTo = 0
                 )
             }
+            Log.i("Change dep", "${uiState.value.currentScrollTo}")
         }
     }
 
@@ -193,6 +195,7 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
                     initialValue = ArtpieceListState()
                 )
 
+            Log.i("TESSSSTTT", "${uiState.value.currentScrollTo}")
             artpieceApiState = ArtpieceApiState.Success
         }
         catch (e: IOException){
