@@ -3,12 +3,9 @@
     <string name="home">Home</string>
     <string name="art">Art</string>
     <string name="departments">Departments</string>
-    <string name="search">Search</string>
     <string name="museum">Metropolitan Museum of Art</string>
     <string name="back">Back</string>
-    <string name="loading">Loading&#8230;</string>
     <string name="loading_failed">Failed to load</string>
-    <string name="navigation_rail">Navigate between items here</string>
     <string name="image_description">Image of artpiece</string>
     <string name="home_par1">Welcome to The Metropolitan Museum of Art\'s mobile app—an immersive gateway to the world of art at your fingertips. Unleash the power of discovery as you embark on a journey through millennia of creativity and culture. Our app is your personalized guide to navigating the vast treasures housed within the museum\'s hallowed halls.</string>
     <string name="home_par2">Explore the app\'s user-friendly interface designed to effortlessly locate your favorite artworks or unearth hidden gems. Whether you\'re a seasoned art enthusiast or a curious newcomer, our search features ensure a seamless experience.</string>
