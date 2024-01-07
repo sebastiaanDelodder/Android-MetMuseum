@@ -9,7 +9,6 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,6 +18,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.example.metmuseum.R
 
+/**
+ * A composable function representing the top bar of the application.
+ *
+ * @param modifier The modifier to be applied to the composable.
+ * @param title The resource ID of the title to be displayed in the top bar. If null, the title won't be displayed.
+ *
+ * @see Composable
+ * @see ExperimentalMaterial3Api
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(

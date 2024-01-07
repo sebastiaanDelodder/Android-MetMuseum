@@ -9,11 +9,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.magnifier
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Icon
@@ -23,7 +20,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -37,7 +33,11 @@ import coil.request.ImageRequest
 import com.example.metmuseum.R
 import com.example.metmuseum.model.Artpiece
 
-
+/**
+ * Composable function for displaying a preview of the ArtDetail.
+ *
+ * @see ArtDetail
+ */
 @Preview(backgroundColor = 0xFFFFFFFF, showBackground = true)
 @Composable
 fun Artdetailprev(
@@ -63,6 +63,14 @@ fun Artdetailprev(
             publicDomain = true,
             ), onBack = { })
 }
+
+/**
+ * Composable function for displaying detailed information about an Artpiece.
+ *
+ * @param artpiece The [Artpiece] to display details for.
+ * @param onBack Callback to be invoked when the back button is clicked.
+ * @param modifier Optional [Modifier] to apply to the composable.
+ */
 @Composable
 fun ArtDetail(
     artpiece: Artpiece,
@@ -189,6 +197,12 @@ fun ArtDetail(
     }
 }
 
+/**
+ * Composable function for displaying information about the artist of an artpiece.
+ *
+ * @param artpiece The [Artpiece] containing artist information.
+ * @param modifier Modifier for styling and layout customization.
+ */
 @Composable
 fun ArtistComponent(
     artpiece: Artpiece,
@@ -293,6 +307,12 @@ fun ArtistComponent(
     }
 }
 
+/**
+ * Composable function for displaying detailed information about an Artpiece.
+ *
+ * @param artpiece The [Artpiece] object containing information to be displayed.
+ * @param modifier Modifier for customizing the layout and appearance of the composable.
+ */
 @Composable
 fun ArtInfo(
     artpiece: Artpiece,
@@ -376,6 +396,12 @@ fun ArtInfo(
     }
 }
 
+/**
+ * Composable function for displaying global information about an Artpiece.
+ *
+ * @param artpiece The [Artpiece] object containing information to be displayed.
+ * @param modifier Optional modifier for customizing the appearance of the composable.
+ */
 @Composable
 fun GlobalInfo(
     artpiece: Artpiece,

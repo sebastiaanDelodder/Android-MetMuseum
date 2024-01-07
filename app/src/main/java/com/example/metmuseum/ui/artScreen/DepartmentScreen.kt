@@ -2,21 +2,13 @@ package com.example.metmuseum.ui.artScreen
 
 import android.util.Log
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.metmuseum.R
 import com.example.metmuseum.model.Department
 import com.example.metmuseum.ui.artScreen.state.DepartmentApiState
 import com.example.metmuseum.ui.artScreen.viewModels.DepartmentViewModel
@@ -24,11 +16,31 @@ import com.example.metmuseum.ui.components.DepartmentGrid
 import com.example.metmuseum.ui.components.ErrorScreen
 import com.example.metmuseum.ui.components.LoadingScreen
 
+/**
+ * A Composable function for previewing the `DepartmentScreen`.
+ *
+ * @see Composable
+ * @see DepartmentScreen
+ */
 @Preview(showBackground = true, backgroundColor = 0xFFF5F0EE, heightDp = 650)
 @Composable
 fun DepartmentPreview() {
     DepartmentScreen(onDepartmentClick = {})
 }
+
+/**
+ * A Composable function representing the main screen for displaying a list of departments.
+ *
+ * @param onDepartmentClick Callback function invoked when a department is clicked.
+ * @param modifier Optional modifier for customization of the layout.
+ * @param departmentViewModel ViewModel responsible for managing department-related data.
+ *
+ * @see Composable
+ * @see Column
+ * @see LoadingScreen
+ * @see ErrorScreen
+ * @see DepartmentGrid
+ */
 @Composable
 fun DepartmentScreen(
     onDepartmentClick: (department: Department) -> Unit,
@@ -36,7 +48,6 @@ fun DepartmentScreen(
     departmentViewModel: DepartmentViewModel = viewModel(factory = DepartmentViewModel.Factory)
 ) {
     Log.i("vm inspection", "DepartmentScreen composition")
-    //val departmentUiState by departmentViewModel.uiState.collectAsState()
     val departmentListState by departmentViewModel.uiListState.collectAsState()
 
     //use the ApiState

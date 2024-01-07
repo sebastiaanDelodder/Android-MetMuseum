@@ -26,21 +26,34 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.io.IOException
 
+/**
+ * ViewModel class for managing the UI state and API requests related to art pieces overview.
+ *
+ * @property artpiecesRepository Repository for handling art piece data operations.
+ * @property _uiState MutableStateFlow representing the internal UI state.
+ * @property uiState Public StateFlow representing the UI state that external components can observe.
+ * @property uiListState StateFlow representing the state of the art pieces list UI.
+ * @property artpieceApiState State representing the current state of the art piece API request.
+ *
+ * @constructor Creates an instance of [ArtOverviewViewModel] with the provided [ArtpiecesRepository].
+ *
+ * @see ViewModel
+ */
 class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository) : ViewModel(){
     private val _uiState = MutableStateFlow(ArtOverviewState())
     val uiState: StateFlow<ArtOverviewState> = _uiState.asStateFlow()
 
-    /*
-    * Note: uiListState is a hot flow (.stateIn makes it so) --> it updates given a scope (viewmodelscope)
-    * when no updates are required (lifecycle) the subscription is stopped after a timeout
-    * */
     lateinit var uiListState : StateFlow<ArtpieceListState>
 
-    // keeping the state of the api request
     var artpieceApiState: ArtpieceApiState by mutableStateOf(ArtpieceApiState.Loading)
         private set
 
 
+    /**
+     * Fetches art pieces from the repository and updates the UI state accordingly.
+     *
+     * @param numberOfArtpieces The number of art pieces to fetch.
+     */
     private fun getRepoArtpieces(numberOfArtpieces: Int){
         try {
             viewModelScope.launch {
@@ -59,8 +72,7 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
                             if (uiState.value.currentObjectIdList.size > i){
                                 artpiecesRepository.refreshArtPiece(uiState.value.currentObjectIdList[i])
                             } else {
-                                Log.i("GET ID", "index $i is out of bounds")
-
+                                Log.e("GET ID", "index $i is out of bounds")
                             }
                         }
                     }
@@ -87,32 +99,26 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
             artpieceApiState = ArtpieceApiState.Success
         }
         catch (e: IOException){
-            //show a toast? save a log on firebase? ...
-            //set the error state
-            //TODO
+            Log.e(("ArtOverviewViewModel"), e.stackTraceToString())
             artpieceApiState = ArtpieceApiState.Error
         } catch (e: Error){
-            //show a toast? save a log on firebase? ...
-            //set the error state
-            //TODO
+            Log.e(("ArtOverviewViewModel"), e.stackTraceToString())
             artpieceApiState = ArtpieceApiState.Error
         }
     }
 
+    /**
+     * Changes the current department in the UI state and triggers a reload of artpieces for the new department.
+     *
+     * @param department The new [Department] to set in the UI state.
+     */
     fun changeDepartment(department: Department){
-        Log.i("Change dep", "CHANGING DEPARTMENT")
+        Log.i("ArtOverviewViewModel", "CHANGING DEPARTMENT")
 
         if (uiState.value.department != null && uiState.value.department!!.departmentId == department.departmentId){
-            Log.i("Change dep", "SAME DEPARTMENT")
-            _uiState.update {
-                    currentState ->
-                currentState.copy(
-                    //currentScrollTo = 0
-                )
-            }
-            Log.i("Change dep", "${uiState.value.currentScrollTo}")
+            Log.i("ArtOverviewViewModel", "SAME DEPARTMENT")
         } else {
-            Log.i("Change dep", "IS NEW DEPARTMENT")
+            Log.i("ArtOverviewViewModel", "IS NEW DEPARTMENT")
             _uiState.update {
                     currentState ->
                 currentState.copy(
@@ -121,11 +127,15 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
                     currentScrollTo = 0
                 )
             }
-            Log.i("VALUE NEW", "${uiState.value.currentScrollTo}")
             getRepoArtpieces(40)
         }
     }
 
+    /**
+     * Sets the selected artpiece in the UI state.
+     *
+     * @param artpiece The [Artpiece] to set as the selected artpiece.
+     */
     fun setArtpiece(artpiece: Artpiece?) {
         _uiState.update {
             currentState ->
@@ -135,6 +145,11 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
         }
     }
 
+    /**
+     * When at the bottom of the page this function is called to load more artpieces.
+     *
+     * @param firstVisibleItemIndex The index of the first visible item in the UI (a.k.a. the index of the top item).
+     */
     fun loadMore(firstVisibleItemIndex: Int) {
         artpieceApiState = ArtpieceApiState.Loading
         try {
@@ -149,17 +164,14 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
                             if (uiState.value.currentObjectIdList.size > i){
                                 artpiecesRepository.refreshArtPiece(uiState.value.currentObjectIdList[i])
                             } else {
-                                Log.i("GET ID", "index $i is out of bounds")
-
+                                Log.e("GET ID", "index $i is out of bounds")
                             }
                         }
                     }
                 }
-
-
             }
 
-            //artpieceApiState = ArtpieceApiState.Success
+
             uiListState = artpiecesRepository.getArtpieces(uiState.value.department!!).map {
                 _uiState.update {
                         currentState ->
@@ -176,31 +188,27 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
                     initialValue = ArtpieceListState()
                 )
 
-            Log.i("TESSSSTTT", "${uiState.value.currentScrollTo}")
             artpieceApiState = ArtpieceApiState.Success
         }
         catch (e: IOException){
-            //show a toast? save a log on firebase? ...
-            //set the error state
-            //TODO
+            Log.e("ArtOverviewViewModel", e.stackTraceToString())
             artpieceApiState = ArtpieceApiState.Error
         } catch (e: Error){
-            //show a toast? save a log on firebase? ...
-            //set the error state
-            //TODO
+            Log.e("ArtOverviewViewModel", e.stackTraceToString())
             artpieceApiState = ArtpieceApiState.Error
         }
     }
 
-    fun setLastLoaded(index: Int) {
-        _uiState.update { currentState ->
-            currentState.copy(
-                currentLoadedIds = index
-            ) }
-    }
 
-
-    //object to tell the android framework how to handle the parameter of the viewmodel
+    /**
+     * A companion object for providing a [ViewModelProvider.Factory] for creating instances of [ArtOverviewViewModel].
+     *
+     * The [Factory] defines how the Android framework should handle the parameters of the [ArtOverviewViewModel].
+     * It retrieves the necessary dependencies, such as the [ArtpiecesRepository], from the application container.
+     *
+     * @see ViewModelProvider.Factory
+     * @see ArtOverviewViewModel
+     */
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
 

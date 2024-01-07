@@ -14,6 +14,16 @@ import androidx.navigation.NavDestination
 import com.example.metmuseum.R
 import com.example.metmuseum.ui.navigation.Destinations
 
+/**
+ * Composable function for rendering the content of a navigation drawer.
+ *
+ * This composable displays a list of navigation items based on the provided [Destinations] enum.
+ * It highlights the selected item and invokes the [onTabPressed] callback when an item is clicked.
+ *
+ * @param selectedDestination The currently selected navigation destination.
+ * @param onTabPressed Callback to be invoked when a navigation item is clicked. It receives the route of the clicked item.
+ * @param modifier Modifier for styling or positioning the navigation drawer content.
+ */
 @Composable
 fun NavigationDrawerContent(
     selectedDestination: NavDestination?,

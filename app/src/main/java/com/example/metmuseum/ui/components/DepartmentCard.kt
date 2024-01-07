@@ -4,11 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -25,19 +21,34 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.metmuseum.R
 import com.example.metmuseum.data.DepartmentSampler
 import com.example.metmuseum.model.Department
 
 
+/**
+ * Composable function for previewing the [DepartmentGrid] in a UI preview.
+ *
+ * @see Preview
+ * @see Composable
+ */
 @Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
 @Composable
 fun DepartmentcardPreview() {
     DepartmentGrid(onDepartmentClick = {}, departments = DepartmentSampler.getAll())
 }
 
+
+/**
+ * Composable function for displaying a grid of [DepartmentCard] items.
+ *
+ * @param onDepartmentClick Callback function invoked when a department card is clicked.
+ * @param departments List of departments to be displayed in the grid.
+ * @param modifier Modifier for customizing the layout.
+ *
+ * @see Composable
+ */
 @Composable
 fun DepartmentGrid(
     onDepartmentClick: (department: Department) -> Unit,
@@ -74,20 +85,24 @@ fun DepartmentGrid(
                 onDepartmentClick = onDepartmentClick,
                 modifier = Modifier
                     .padding(dimensionResource(id = R.dimen.padding_medium))
-
-                    //.height(68.dp)
                     .heightIn(
                         min = dimensionResource(id = R.dimen.card_size_min),
                         max = dimensionResource(id = R.dimen.card_size_max)
                     )
-                    //.fillMaxSize()
-                    //.fillMaxSize()
             )
         }
     }
 }
 
-
+/**
+ * Composable function for displaying a single department card.
+ *
+ * @param department The department to be displayed.
+ * @param onDepartmentClick Callback function invoked when the department card is clicked.
+ * @param modifier Modifier for customizing the layout.
+ *
+ * @see Composable
+ */
 @Composable
 fun DepartmentCard(
     department: Department,
@@ -97,7 +112,6 @@ fun DepartmentCard(
     Surface (
         shape = MaterialTheme.shapes.medium,
         modifier = modifier
-            //.padding(4.dp)
             .fillMaxWidth()
             .clickable { onDepartmentClick(department) },
         color = MaterialTheme.colorScheme.secondaryContainer,
@@ -106,7 +120,6 @@ fun DepartmentCard(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = modifier
-                //.width(255.dp)
         ) {
             Text(
                 text = department.displayName,

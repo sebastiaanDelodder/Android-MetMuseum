@@ -13,9 +13,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import com.example.metmuseum.R
 
+/**
+ * Composable function representing the home screen of the application.
+ *
+ * This composable displays various content such as an image, text paragraphs, and spacing within a LazyColumn.
+ *
+ * @param modifier Modifier for styling and layout customization.
+ */
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier

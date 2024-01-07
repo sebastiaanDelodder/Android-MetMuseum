@@ -1,9 +1,17 @@
 package com.example.metmuseum.data
 
-import android.util.Log
 import com.example.metmuseum.model.Artpiece
 
+/**
+ * Object providing sample data for [Artpiece] entities.
+ *
+ * This object includes a list of sample [Artpiece] instances and a function to retrieve all sample Artpieces.
+ */
 object ArtpieceSampler {
+
+    /**
+     * List of sample Artpiece instances.
+     */
     val sampleArtpieces = listOf<Artpiece>(
         Artpiece(
             objectID = 1,
@@ -102,8 +110,12 @@ object ArtpieceSampler {
         ),
     )
 
+    /**
+     * Function to retrieve all sample Artpieces.
+     *
+     * @return A list of sample [Artpiece] instances.
+     */
     val getAll: () -> List<Artpiece> = {
-        Log.i("ArtPieceSampler", "getAll called")
         sampleArtpieces
     }
 }
