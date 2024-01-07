@@ -9,16 +9,43 @@ import com.example.metmuseum.network.items.ApiElementMeasurements
 import com.example.metmuseum.network.items.ApiMeasurement
 import com.example.metmuseum.network.items.ApiTag
 
+/**
+ * Fake data source containing mock data for testing purposes.
+ *
+ * This object provides predefined values for department IDs, names, and mock art piece information.
+ */
 object FakeDataSource {
+
+    /**
+     * Constant representing the first department ID.
+     */
     const val departmentIdOne = 1
+    /**
+     * Constant representing the name of the first department.
+     */
     const val departmentNameOne = "American Decorative Arts"
 
+    /**
+     * Constant representing the second department ID.
+     */
     const val departmentIdTwo = 2
+    /**
+     * Constant representing the name of the second department.
+     */
     const val departmentNameTwo = "Arms and Armor"
 
+    /**
+     * Constant representing the third department ID.
+     */
     const val departmentIdThree = 3
+    /**
+     * Constant representing the name of the third department.
+     */
     const val departmentNameThree = "Arts of Africa, Oceania, and the Americas"
 
+    /**
+     * ApiDepartmentItem containing mock data for departments.
+     */
     val departments = ApiDepartmentItem(
         departments = listOf(
             ApiDepartment(departmentIdOne, departmentNameOne),
@@ -27,12 +54,18 @@ object FakeDataSource {
         )
     )
 
+    /**
+     * ApiArtpieceItem containing mock data for an art piece.
+     */
     val artpieceItem =
         ApiArtpieceItem(
             total = 1,
             objectIDs = listOf(1),
         )
 
+    /**
+     * List containing mock data for art pieces.
+     */
     val artpieces = listOf(
         ApiArtpiece(
             department = departmentNameOne,

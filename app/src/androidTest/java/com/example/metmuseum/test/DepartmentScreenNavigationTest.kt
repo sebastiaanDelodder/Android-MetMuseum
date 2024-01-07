@@ -23,7 +23,7 @@ import org.junit.Test
  * This test class uses the AndroidComposeRule for UI testing with Jetpack Compose
  * and checks the navigation behavior within the app.
  *
- * Note: To access an empty activity, the code uses [ComponentActivity] instead of [MainActivity].
+ * Note: To access an empty activity, the code uses [ComponentActivity] instead of MainActivity.
  *
  * @see Rule
  * @see createAndroidComposeRule
