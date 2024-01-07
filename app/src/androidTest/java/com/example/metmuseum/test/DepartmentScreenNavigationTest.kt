@@ -16,16 +16,36 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+
+/**
+ * UI test class for navigation within the Met Museum app's Department screen.
+ *
+ * This test class uses the AndroidComposeRule for UI testing with Jetpack Compose
+ * and checks the navigation behavior within the app.
+ *
+ * Note: To access an empty activity, the code uses [ComponentActivity] instead of [MainActivity].
+ *
+ * @see Rule
+ * @see createAndroidComposeRule
+ * @see Before
+ * @see Test
+ */
 class DepartmentScreenNavigationTest {
     /**
-     * Note: To access to an empty activity, the code uses ComponentActivity instead of
-     * MainActivity.
+     * AndroidComposeRule for UI testing with Jetpack Compose.
      */
     @get:Rule
     val composeTestRule = createAndroidComposeRule<ComponentActivity>()
 
+    /**
+     * TestNavHostController for simulating navigation events and verifying destinations.
+     */
     private lateinit var navController: TestNavHostController
 
+
+    /**
+     * Set up the Met Museum NavHost with the specified [NavigationType] before each test.
+     */
     @Before
     fun setupMetMuseumNavHost() {
         composeTestRule.setContent {
@@ -36,6 +56,10 @@ class DepartmentScreenNavigationTest {
         }
     }
 
+
+    /**
+     * Test case: Navigate to the Art Overview screen and verify the presence of a specific item.
+     */
     @Test
     fun metMuseumNavHost_navigateToArtOverviewScreen() {
         navigateToArtScreen()
@@ -50,6 +74,10 @@ class DepartmentScreenNavigationTest {
             ).assertIsDisplayed()
     }
 
+    /**
+     * Test case: Navigate to the Art Overview screen, go back to the Departments screen,
+     * and verify the presence of a specific item.
+     */
     @Test
     fun metMuseumNavHost_navigateToArtOverviewScreenAndBackToDepartments() {
         navigateToArtScreen()
@@ -76,11 +104,17 @@ class DepartmentScreenNavigationTest {
             ).assertIsDisplayed()
     }
 
+    /**
+     * Navigate to the Art screen using a specific action.
+     */
     private fun navigateToArtScreen() {
         composeTestRule
             .onNodeWithStringId(R.string.art).performClick()
     }
 
+    /**
+     * Navigate to the Art screen using a specific action.
+     */
     private fun loadWait(){
         Thread.sleep(2000)
         composeTestRule.waitForIdle()
