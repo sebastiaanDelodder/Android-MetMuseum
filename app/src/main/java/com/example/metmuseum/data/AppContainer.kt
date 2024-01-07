@@ -1,8 +1,7 @@
 package com.example.metmuseum.data
 
 import android.content.Context
-import com.example.metmuseum.data.database.artpieces.ArtpieceDb
-import com.example.metmuseum.data.database.departments.DepartmentDb
+import com.example.metmuseum.data.database.artpieces.MetArtDb
 import com.example.metmuseum.data.repository.ArtpiecesRepository
 import com.example.metmuseum.data.repository.CachingArtpiecesRepository
 import com.example.metmuseum.data.repository.CachingDepartmentsRepository
@@ -32,7 +31,7 @@ class DefaultAppContainer(private val context: Context): AppContainer {
     }
 
     override val departmentsRepository: DepartmentsRepository by lazy {
-        CachingDepartmentsRepository(DepartmentDb.getDatabase(context = context).departmentDao(), retrofitDepartmentService)
+        CachingDepartmentsRepository(MetArtDb.getDatabase(context = context).departmentDao(), retrofitDepartmentService)
     }
 
     private val retrofitArtpieceService : ArtpieceApiService by lazy {
@@ -40,6 +39,6 @@ class DefaultAppContainer(private val context: Context): AppContainer {
     }
 
     override val artpiecesRepository: ArtpiecesRepository by lazy {
-        CachingArtpiecesRepository(ArtpieceDb.getDatabase(context = context).artpieceDao(), retrofitArtpieceService)
+        CachingArtpiecesRepository(MetArtDb.getDatabase(context = context).artpieceDao(), retrofitArtpieceService)
     }
 }

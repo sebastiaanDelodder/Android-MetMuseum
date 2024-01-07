@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.metmuseum.data.database.artpieces.MetArtDb
 import com.example.metmuseum.data.database.departments.DepartmentDao
-import com.example.metmuseum.data.database.departments.DepartmentDb
 import com.example.metmuseum.data.database.departments.asDbDepartment
 import com.example.metmuseum.data.database.departments.asDomainDepartment
 import com.example.metmuseum.model.Department
@@ -21,7 +21,7 @@ import java.io.IOException
 @RunWith(AndroidJUnit4::class)
 class DepartmentDaoTest {
     private lateinit var departmentDao: DepartmentDao
-    private lateinit var departmentDb: DepartmentDb
+    private lateinit var departmentDb: MetArtDb
 
     private var department1 = Department(1, "American Decorative Arts")
     private var department2 = Department(2, "Arms and Armor")
@@ -41,7 +41,7 @@ class DepartmentDaoTest {
         val context: Context = ApplicationProvider.getApplicationContext()
         // Using an in-memory database because the information stored here disappears when the
         // process is killed.
-        departmentDb = Room.inMemoryDatabaseBuilder(context, DepartmentDb::class.java)
+        departmentDb = Room.inMemoryDatabaseBuilder(context, MetArtDb::class.java)
             // Allowing main thread queries, just for testing.
             .allowMainThreadQueries()
             .build()
