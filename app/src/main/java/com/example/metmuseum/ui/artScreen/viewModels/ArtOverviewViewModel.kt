@@ -69,7 +69,8 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
                 _uiState.update {
                         currentState ->
                             currentState.copy(
-                                currentLoadedIds = currentState.currentLoadedIds + numberOfArtpieces
+                                currentLoadedIds = currentState.currentLoadedIds + numberOfArtpieces,
+                                currentScrollTo = _uiState.value.currentScrollTo
                             )
                 }
             }
@@ -98,31 +99,19 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
         }
     }
 
-    fun changeSearch(search: String){
-        _uiState.update {
-            currentState ->
-            currentState.copy(
-                search = search
-            )
-        }
-    }
-
     fun changeDepartment(department: Department){
         Log.i("Change dep", "CHANGING DEPARTMENT")
 
-        if (uiState.value.department == null){
-            Log.i("Change dep", "IS NULL")
+        if (uiState.value.department != null && uiState.value.department!!.departmentId == department.departmentId){
+            Log.i("Change dep", "SAME DEPARTMENT")
             _uiState.update {
                     currentState ->
                 currentState.copy(
-                    department = department,
-                    currentLoadedIds = 0,
-                    currentScrollTo = 0
+                    //currentScrollTo = 0
                 )
             }
-
-            getRepoArtpieces(40)
-        } else if (uiState.value.department != null && uiState.value.department!!.departmentId != department.departmentId){
+            Log.i("Change dep", "${uiState.value.currentScrollTo}")
+        } else {
             Log.i("Change dep", "IS NEW DEPARTMENT")
             _uiState.update {
                     currentState ->
@@ -132,16 +121,8 @@ class ArtOverviewViewModel(private val artpiecesRepository: ArtpiecesRepository)
                     currentScrollTo = 0
                 )
             }
+            Log.i("VALUE NEW", "${uiState.value.currentScrollTo}")
             getRepoArtpieces(40)
-        } else if (uiState.value.department != null && uiState.value.department!!.departmentId == department.departmentId){
-            Log.i("Change dep", "SAME DEPARTMENT")
-            _uiState.update {
-                    currentState ->
-                currentState.copy(
-                    //currentScrollTo = 0
-                )
-            }
-            Log.i("Change dep", "${uiState.value.currentScrollTo}")
         }
     }
 
