@@ -38,8 +38,6 @@ class DepartmentViewModelTest {
             departmentsRepository = fakeApiDepartmentsRepository,
         )
 
-        //val resultDepartmentsList = mutableListOf<List<Department>>()
-        //viewModel.setNewTaskName(someTaskName)
         Assert.assertEquals(fakeDepartments, viewModel.uiListState.value.departments)
     }
 }

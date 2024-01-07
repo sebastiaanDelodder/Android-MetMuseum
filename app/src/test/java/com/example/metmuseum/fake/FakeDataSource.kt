@@ -2,6 +2,7 @@ package com.example.metmuseum.fake
 
 import com.example.metmuseum.network.ApiArtpiece
 import com.example.metmuseum.network.ApiDepartment
+import com.example.metmuseum.network.items.ApiArtpieceItem
 import com.example.metmuseum.network.items.ApiConstituent
 import com.example.metmuseum.network.items.ApiDepartmentItem
 import com.example.metmuseum.network.items.ApiElementMeasurements
@@ -26,6 +27,11 @@ object FakeDataSource {
         )
     )
 
+    val artpieceItem =
+        ApiArtpieceItem(
+            total = 1,
+            objectIDs = listOf(1),
+        )
 
     val artpieces = listOf(
         ApiArtpiece(
