@@ -1,0 +1,978 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ApiArtpiece</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            MetMuseum
+                    </a>            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":app:dokkaHtmlPartial/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="app::com.example.metmuseum.network/ApiArtpiece///PointingToDeclaration//1711373860">
+  <div class="breadcrumbs"><a href="../../index.html">app</a><span class="delimiter">/</span><a href="../index.html">com.example.metmuseum.network</a><span class="delimiter">/</span><span class="current">ApiArtpiece</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Api</span><wbr><span><span>Artpiece</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">ApiArtpiece</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>objectID<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isHighlight<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>accessionNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>accessionYear<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isPublicDomain<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>primaryImage<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>primaryImageSmall<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>additionalImages<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>constituents<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../com.example.metmuseum.network.items/-api-constituent/index.html">ApiConstituent</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>department<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>objectName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>title<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>culture<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>period<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>dynasty<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>reign<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>portfolio<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>artistRole<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>artistPrefix<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>artistDisplayName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>artistDisplayBio<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>artistSuffix<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>artistAlphaSort<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>artistNationality<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>artistBeginDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>artistEndDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>artistGender<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>artistWikidata_URL<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>artistULAN_URL<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>objectDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>objectBeginDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>objectEndDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>medium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>dimensions<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>measurements<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../com.example.metmuseum.network.items/-api-measurement/index.html">ApiMeasurement</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>creditLine<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>geographyType<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>city<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>state<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>county<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>country<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>region<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>subregion<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>locale<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>locus<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>excavation<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>river<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>classification<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>rightsAndReproduction<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>linkResource<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>metadataDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>repository<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>objectURL<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>tags<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../com.example.metmuseum.network.items/-api-tag/index.html">ApiTag</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>objectWikidata_URL<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isTimelineWork<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>GalleryNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><p class="paragraph">Represents an art piece retrieved from an API.</p><p class="paragraph">This class is annotated with <span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/">Serializable</span> to support serialization/deserialization.</p><h4 class="">See also</h4><div class="table"><div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span><span>Serializable</span></span></span></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-1900223453%2FConstructors%2F1711373860" anchor-label="ApiArtpiece" id="-1900223453%2FConstructors%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-api-artpiece.html"><span>Api</span><wbr><span><span>Artpiece</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1900223453%2FConstructors%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">objectID<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">isHighlight<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">accessionNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">accessionYear<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">isPublicDomain<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">primaryImage<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">primaryImageSmall<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">additionalImages<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">constituents<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../com.example.metmuseum.network.items/-api-constituent/index.html">ApiConstituent</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">department<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">objectName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">title<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">culture<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">period<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">dynasty<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">reign<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">portfolio<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">artistRole<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">artistPrefix<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">artistDisplayName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">artistDisplayBio<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">artistSuffix<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">artistAlphaSort<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">artistNationality<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">artistBeginDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">artistEndDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">artistGender<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">artistWikidata_URL<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">artistULAN_URL<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">objectDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">objectBeginDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">objectEndDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">medium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">dimensions<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">measurements<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../com.example.metmuseum.network.items/-api-measurement/index.html">ApiMeasurement</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">creditLine<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">geographyType<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">city<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">state<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">county<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">country<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">region<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">subregion<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">locale<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">locus<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">excavation<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">river<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">classification<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">rightsAndReproduction<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">linkResource<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">metadataDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">repository<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">objectURL<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">tags<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../com.example.metmuseum.network.items/-api-tag/index.html">ApiTag</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">objectWikidata_URL<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">isTimelineWork<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">GalleryNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-1560200852%2FProperties%2F1711373860" anchor-label="accessionNumber" id="-1560200852%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="accession-number.html"><span>accession</span><wbr><span><span>Number</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1560200852%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="accession-number.html">accessionNumber</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The accession number of the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="232758520%2FProperties%2F1711373860" anchor-label="accessionYear" id="232758520%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="accession-year.html"><span>accession</span><wbr><span><span>Year</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="232758520%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="accession-year.html">accessionYear</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The year the art piece was accessioned.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1039377666%2FProperties%2F1711373860" anchor-label="additionalImages" id="1039377666%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="additional-images.html"><span>additional</span><wbr><span><span>Images</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1039377666%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="additional-images.html">additionalImages</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">List of URLs for additional images of the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1486984604%2FProperties%2F1711373860" anchor-label="artistAlphaSort" id="-1486984604%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="artist-alpha-sort.html"><span>artist</span><wbr><span>Alpha</span><wbr><span><span>Sort</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1486984604%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="artist-alpha-sort.html">artistAlphaSort</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The alpha-sorted name of the artist.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2023963927%2FProperties%2F1711373860" anchor-label="artistBeginDate" id="-2023963927%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="artist-begin-date.html"><span>artist</span><wbr><span>Begin</span><wbr><span><span>Date</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2023963927%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="artist-begin-date.html">artistBeginDate</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The birth date of the artist.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1048792396%2FProperties%2F1711373860" anchor-label="artistDisplayBio" id="-1048792396%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="artist-display-bio.html"><span>artist</span><wbr><span>Display</span><wbr><span><span>Bio</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1048792396%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="artist-display-bio.html">artistDisplayBio</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The biography of the artist.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1473865613%2FProperties%2F1711373860" anchor-label="artistDisplayName" id="-1473865613%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="artist-display-name.html"><span>artist</span><wbr><span>Display</span><wbr><span><span>Name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1473865613%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="artist-display-name.html">artistDisplayName</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The displayed name of the artist.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-975491913%2FProperties%2F1711373860" anchor-label="artistEndDate" id="-975491913%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="artist-end-date.html"><span>artist</span><wbr><span>End</span><wbr><span><span>Date</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-975491913%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="artist-end-date.html">artistEndDate</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The death date of the artist.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1017425849%2FProperties%2F1711373860" anchor-label="artistGender" id="1017425849%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="artist-gender.html"><span>artist</span><wbr><span><span>Gender</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1017425849%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="artist-gender.html">artistGender</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The gender of the artist.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1952200708%2FProperties%2F1711373860" anchor-label="artistNationality" id="1952200708%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="artist-nationality.html"><span>artist</span><wbr><span><span>Nationality</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1952200708%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="artist-nationality.html">artistNationality</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The nationality of the artist.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1606921480%2FProperties%2F1711373860" anchor-label="artistPrefix" id="1606921480%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="artist-prefix.html"><span>artist</span><wbr><span><span>Prefix</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1606921480%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="artist-prefix.html">artistPrefix</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The prefix associated with the artist's name.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1858090268%2FProperties%2F1711373860" anchor-label="artistRole" id="-1858090268%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="artist-role.html"><span>artist</span><wbr><span><span>Role</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1858090268%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="artist-role.html">artistRole</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The role of the artist.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-908595927%2FProperties%2F1711373860" anchor-label="artistSuffix" id="-908595927%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="artist-suffix.html"><span>artist</span><wbr><span><span>Suffix</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-908595927%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="artist-suffix.html">artistSuffix</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The suffix associated with the artist's name.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1070895910%2FProperties%2F1711373860" anchor-label="artistULAN_URL" id="1070895910%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="artist-u-l-a-n_-u-r-l.html"><span>artist</span><wbr><span><span>ULAN_URL</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1070895910%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="artist-u-l-a-n_-u-r-l.html">artistULAN_URL</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The ULAN (Getty Vocabulary Program) URL of the artist.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1828289040%2FProperties%2F1711373860" anchor-label="artistWikidata_URL" id="-1828289040%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="artist-wikidata_-u-r-l.html"><span>artist</span><wbr><span><span>Wikidata_URL</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1828289040%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="artist-wikidata_-u-r-l.html">artistWikidata_URL</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The Wikidata URL of the artist.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-892456810%2FProperties%2F1711373860" anchor-label="city" id="-892456810%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="city.html"><span><span>city</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-892456810%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="city.html">city</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The city associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1946076805%2FProperties%2F1711373860" anchor-label="classification" id="-1946076805%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="classification.html"><span><span>classification</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1946076805%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="classification.html">classification</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The classification of the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1362144590%2FProperties%2F1711373860" anchor-label="constituents" id="-1362144590%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="constituents.html"><span><span>constituents</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1362144590%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="constituents.html">constituents</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../com.example.metmuseum.network.items/-api-constituent/index.html">ApiConstituent</a><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">List of constituents (contributors) associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1231281795%2FProperties%2F1711373860" anchor-label="country" id="1231281795%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="country.html"><span><span>country</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1231281795%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="country.html">country</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The country associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="338876567%2FProperties%2F1711373860" anchor-label="county" id="338876567%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="county.html"><span><span>county</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="338876567%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="county.html">county</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The county associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1528876724%2FProperties%2F1711373860" anchor-label="creditLine" id="1528876724%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="credit-line.html"><span>credit</span><wbr><span><span>Line</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1528876724%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="credit-line.html">creditLine</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The credit line for the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2072220821%2FProperties%2F1711373860" anchor-label="culture" id="-2072220821%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="culture.html"><span><span>culture</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2072220821%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="culture.html">culture</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The cultural context of the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-553374321%2FProperties%2F1711373860" anchor-label="department" id="-553374321%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="department.html"><span><span>department</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-553374321%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="department.html">department</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The department to which the art piece belongs.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-411131532%2FProperties%2F1711373860" anchor-label="dimensions" id="-411131532%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dimensions.html"><span><span>dimensions</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-411131532%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="dimensions.html">dimensions</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The textual description of the art piece's dimensions.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="112574249%2FProperties%2F1711373860" anchor-label="dynasty" id="112574249%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dynasty.html"><span><span>dynasty</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="112574249%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="dynasty.html">dynasty</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The dynasty associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-993866031%2FProperties%2F1711373860" anchor-label="excavation" id="-993866031%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="excavation.html"><span><span>excavation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-993866031%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="excavation.html">excavation</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The excavation information associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="931641246%2FProperties%2F1711373860" anchor-label="GalleryNumber" id="931641246%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-gallery-number.html"><span>Gallery</span><wbr><span><span>Number</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="931641246%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-gallery-number.html">GalleryNumber</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The gallery number associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="458726467%2FProperties%2F1711373860" anchor-label="geographyType" id="458726467%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="geography-type.html"><span>geography</span><wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="458726467%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="geography-type.html">geographyType</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The type of geography associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="833001455%2FProperties%2F1711373860" anchor-label="isHighlight" id="833001455%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-highlight.html"><span>is</span><wbr><span><span>Highlight</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="833001455%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="is-highlight.html">isHighlight</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Indicates whether the art piece is a highlight.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="849755050%2FProperties%2F1711373860" anchor-label="isPublicDomain" id="849755050%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-public-domain.html"><span>is</span><wbr><span>Public</span><wbr><span><span>Domain</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="849755050%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="is-public-domain.html">isPublicDomain</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Indicates whether the art piece is in the public domain.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2092564709%2FProperties%2F1711373860" anchor-label="isTimelineWork" id="2092564709%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-timeline-work.html"><span>is</span><wbr><span>Timeline</span><wbr><span><span>Work</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2092564709%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="is-timeline-work.html">isTimelineWork</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Indicates whether the art piece is a part of the timeline.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1021134457%2FProperties%2F1711373860" anchor-label="linkResource" id="1021134457%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="link-resource.html"><span>link</span><wbr><span><span>Resource</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1021134457%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="link-resource.html">linkResource</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">URL linking to additional resources related to the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1096585849%2FProperties%2F1711373860" anchor-label="locale" id="-1096585849%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="locale.html"><span><span>locale</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1096585849%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="locale.html">locale</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The locale associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="119450683%2FProperties%2F1711373860" anchor-label="locus" id="119450683%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="locus.html"><span><span>locus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="119450683%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="locus.html">locus</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The locus associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1201371318%2FProperties%2F1711373860" anchor-label="measurements" id="-1201371318%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="measurements.html"><span><span>measurements</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1201371318%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="measurements.html">measurements</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../com.example.metmuseum.network.items/-api-measurement/index.html">ApiMeasurement</a><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">List of measurements associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1890987828%2FProperties%2F1711373860" anchor-label="medium" id="-1890987828%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="medium.html"><span><span>medium</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1890987828%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="medium.html">medium</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The artistic medium used for the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="829853380%2FProperties%2F1711373860" anchor-label="metadataDate" id="829853380%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="metadata-date.html"><span>metadata</span><wbr><span><span>Date</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="829853380%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="metadata-date.html">metadataDate</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The date of the metadata associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1529055457%2FProperties%2F1711373860" anchor-label="objectBeginDate" id="1529055457%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="object-begin-date.html"><span>object</span><wbr><span>Begin</span><wbr><span><span>Date</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1529055457%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="object-begin-date.html">objectBeginDate</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">The start date of the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1646184884%2FProperties%2F1711373860" anchor-label="objectDate" id="1646184884%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="object-date.html"><span>object</span><wbr><span><span>Date</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1646184884%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="object-date.html">objectDate</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The date associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-435482449%2FProperties%2F1711373860" anchor-label="objectEndDate" id="-435482449%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="object-end-date.html"><span>object</span><wbr><span>End</span><wbr><span><span>Date</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-435482449%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="object-end-date.html">objectEndDate</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">The end date of the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1564770887%2FProperties%2F1711373860" anchor-label="objectID" id="1564770887%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="object-i-d.html"><span>object</span><wbr><span><span>ID</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1564770887%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="object-i-d.html">objectID</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">The unique identifier for the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1845903735%2FProperties%2F1711373860" anchor-label="objectName" id="1845903735%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="object-name.html"><span>object</span><wbr><span><span>Name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1845903735%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="object-name.html">objectName</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The type or name of the art object.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-859404631%2FProperties%2F1711373860" anchor-label="objectURL" id="-859404631%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="object-u-r-l.html"><span>object</span><wbr><span><span>URL</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-859404631%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="object-u-r-l.html">objectURL</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">URL linking to the detailed information about the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="998137080%2FProperties%2F1711373860" anchor-label="objectWikidata_URL" id="998137080%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="object-wikidata_-u-r-l.html"><span>object</span><wbr><span><span>Wikidata_URL</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="998137080%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="object-wikidata_-u-r-l.html">objectWikidata_URL</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The Wikidata URL associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1478993920%2FProperties%2F1711373860" anchor-label="period" id="-1478993920%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="period.html"><span><span>period</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1478993920%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="period.html">period</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The historical period of the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="641574417%2FProperties%2F1711373860" anchor-label="portfolio" id="641574417%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="portfolio.html"><span><span>portfolio</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="641574417%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="portfolio.html">portfolio</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The portfolio to which the art piece belongs.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1686598984%2FProperties%2F1711373860" anchor-label="primaryImage" id="1686598984%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="primary-image.html"><span>primary</span><wbr><span><span>Image</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1686598984%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="primary-image.html">primaryImage</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">URL of the primary image of the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1252650507%2FProperties%2F1711373860" anchor-label="primaryImageSmall" id="1252650507%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="primary-image-small.html"><span>primary</span><wbr><span>Image</span><wbr><span><span>Small</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1252650507%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="primary-image-small.html">primaryImageSmall</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">URL of a small version of the primary image.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="498619949%2FProperties%2F1711373860" anchor-label="region" id="498619949%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="region.html"><span><span>region</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="498619949%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="region.html">region</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The region associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-414947588%2FProperties%2F1711373860" anchor-label="reign" id="-414947588%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="reign.html"><span><span>reign</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-414947588%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="reign.html">reign</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The reign during which the art piece was created.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1994128535%2FProperties%2F1711373860" anchor-label="repository" id="1994128535%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="repository.html"><span><span>repository</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1994128535%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="repository.html">repository</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The repository or institution where the art piece is stored.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2006650355%2FProperties%2F1711373860" anchor-label="rightsAndReproduction" id="-2006650355%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="rights-and-reproduction.html"><span>rights</span><wbr><span>And</span><wbr><span><span>Reproduction</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2006650355%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="rights-and-reproduction.html">rightsAndReproduction</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Information about rights and reproduction for the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1541702605%2FProperties%2F1711373860" anchor-label="river" id="1541702605%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="river.html"><span><span>river</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1541702605%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="river.html">river</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The river associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1517213464%2FProperties%2F1711373860" anchor-label="state" id="-1517213464%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="state.html"><span><span>state</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1517213464%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="state.html">state</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The state associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1547958181%2FProperties%2F1711373860" anchor-label="subregion" id="1547958181%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="subregion.html"><span><span>subregion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1547958181%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="subregion.html">subregion</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The subregion associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="241063336%2FProperties%2F1711373860" anchor-label="tags" id="241063336%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="tags.html"><span><span>tags</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="241063336%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="tags.html">tags</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../com.example.metmuseum.network.items/-api-tag/index.html">ApiTag</a><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">List of tags associated with the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-188086015%2FProperties%2F1711373860" anchor-label="title" id="-188086015%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="title.html"><span><span>title</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-188086015%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="title.html">title</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The title of the art piece.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="EXTENSION_FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-348675803%2FFunctions%2F1711373860" anchor-label="asDomainObject" id="-348675803%2FFunctions%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../as-domain-object.html"><span>as</span><wbr><span>Domain</span><wbr><span><span>Object</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-348675803%2FFunctions%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="index.html">ApiArtpiece</a><span class="token punctuation">.</span><a href="../as-domain-object.html"><span class="token function">asDomainObject</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.example.metmuseum.model/-artpiece/index.html">Artpiece</a></div><div class="brief "><p class="paragraph">Extension function to convert an <a href="index.html">ApiArtpiece</a> object to a domain model <a href="../../com.example.metmuseum.model/-artpiece/index.html">Artpiece</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
