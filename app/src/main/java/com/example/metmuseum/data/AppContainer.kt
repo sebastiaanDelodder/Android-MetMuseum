@@ -1,7 +1,7 @@
 package com.example.metmuseum.data
 
 import android.content.Context
-import com.example.metmuseum.data.database.artpieces.MetArtDb
+import com.example.metmuseum.data.database.MetArtDb
 import com.example.metmuseum.data.repository.ArtpiecesRepository
 import com.example.metmuseum.data.repository.CachingArtpiecesRepository
 import com.example.metmuseum.data.repository.CachingDepartmentsRepository

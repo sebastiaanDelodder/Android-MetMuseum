@@ -4,6 +4,29 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.metmuseum.model.Artpiece
 
+/**
+ * Entity class representing an [Artpiece] in the database.
+ *
+ * @property objectID Unique identifier for the Artpiece.
+ * @property primaryImageSmall URL to the small-sized primary image of the Artpiece.
+ * @property title Title of the Artpiece.
+ * @property department Department to which the Artpiece belongs.
+ * @property artistDisplayName Display name of the artist.
+ * @property artistNationality Nationality of the artist.
+ * @property artistBeginDate Begin date of the artist.
+ * @property artistEndDate End date of the artist.
+ * @property objectDate Date associated with the Artpiece.
+ * @property medium Medium used in creating the Artpiece.
+ * @property dimensions Dimensions of the Artpiece.
+ * @property country Country associated with the Artpiece.
+ * @property culture Cultural origin of the Artpiece.
+ * @property period Period to which the Artpiece belongs.
+ * @property dynasty Dynasty associated with the Artpiece.
+ * @property publicDomain Indicates whether the Artpiece is in the public domain.
+ * @property galleryNumber Gallery number associated with the Artpiece.
+ *
+ * @constructor Creates a new [dbArtpiece] with default values.
+ */
 @Entity(tableName = "artpieces")
 data class dbArtpiece (
     @PrimaryKey(autoGenerate = true)
@@ -26,6 +49,11 @@ data class dbArtpiece (
     var galleryNumber: String = "",
 )
 
+/**
+ * Converts a [dbArtpiece] to a corresponding [Artpiece] in the domain layer.
+ *
+ * @return [Artpiece] representation of the [dbArtpiece].
+ */
 fun dbArtpiece.asDomainArtpiece(): Artpiece {
     return Artpiece(
         objectID = this.objectID,
@@ -48,6 +76,11 @@ fun dbArtpiece.asDomainArtpiece(): Artpiece {
     )
 }
 
+/**
+ * Converts an [Artpiece] from the domain layer to a corresponding [dbArtpiece] in the database.
+ *
+ * @return [dbArtpiece] representation of the [Artpiece].
+ */
 fun Artpiece.asDbArtpiece(): dbArtpiece {
     return dbArtpiece(
         objectID = this.objectID,
@@ -70,6 +103,11 @@ fun Artpiece.asDbArtpiece(): dbArtpiece {
     )
 }
 
+/**
+ * Converts a list of [dbArtpiece] instances to a list of corresponding [Artpiece] instances in the domain layer.
+ *
+ * @return List of [Artpiece] representations of the [dbArtpiece] instances.
+ */
 fun List<dbArtpiece>.asDomainArtpieces(): List<Artpiece>{
     var artpieceList = this.map {
         Artpiece(

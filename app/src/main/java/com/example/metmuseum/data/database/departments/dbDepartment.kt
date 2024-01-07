@@ -4,6 +4,12 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.metmuseum.model.Department
 
+/**
+ * Entity class representing a [Department] in the database.
+ *
+ * @property departmentId Unique identifier for the department. Auto-generated if not provided.
+ * @property displayName Display name of the department.
+ */
 @Entity(tableName = "departments")
 data class dbDepartment (
     @PrimaryKey(autoGenerate = true)
@@ -11,6 +17,11 @@ data class dbDepartment (
     val displayName: String = "",
 )
 
+/**
+ * Extension function to convert a [dbDepartment] entity to a domain [Department] model.
+ *
+ * @return Equivalent [Department] model.
+ */
 fun dbDepartment.asDomainDepartment(): Department {
     return Department(
         departmentId = this.departmentId,
@@ -18,6 +29,11 @@ fun dbDepartment.asDomainDepartment(): Department {
     )
 }
 
+/**
+ * Extension function to convert a [Department] domain model to a [dbDepartment] entity.
+ *
+ * @return Equivalent [dbDepartment] entity.
+ */
 fun Department.asDbDepartment(): dbDepartment {
     return dbDepartment(
         departmentId = this.departmentId,
@@ -25,6 +41,11 @@ fun Department.asDbDepartment(): dbDepartment {
     )
 }
 
+/**
+ * Extension function to convert a list of [dbDepartment] entities to a list of [Department] domain models.
+ *
+ * @return List of equivalent [Department] models.
+ */
 fun List<dbDepartment>.asDomainDepartments(): List<Department>{
     var departmentList = this.map {
         Department(
