@@ -8,23 +8,19 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -39,6 +35,11 @@ import com.example.metmuseum.model.Artpiece
 import kotlinx.coroutines.launch
 
 
+/**
+ * Composable function for displaying a preview of the ArtCard.
+ *
+ * @see ArtScreenColumn
+ */
 @Preview(showBackground = true, backgroundColor = 0xFFF5F0EE)
 @Composable
 fun ArtCardPrev() {
@@ -51,6 +52,18 @@ fun ArtCardPrev() {
     )
 }
 
+/**
+ * Composable function representing a column layout for displaying a list of art pieces.
+ *
+ * @param artpieces List of art pieces to be displayed.
+ * @param onArtpieceClick Callback function invoked when an art piece is clicked.
+ * @param modifier Modifier for customizing the layout.
+ * @param lazyListState LazyListState for managing the scroll state of the LazyColumn.
+ * @param currentIndex Index of the currently selected art piece.
+ * @param loadMore Callback function for loading more items when reaching the end of the list.
+ *
+ * @see ArtCard
+ */
 @Composable
 fun ArtScreenColumn(
     artpieces: List<Artpiece>,
@@ -91,6 +104,16 @@ fun ArtScreenColumn(
     }
 }
 
+/**
+ * Composable function for displaying an individual art card.
+ *
+ * @param art Art piece to be displayed.
+ * @param onArtpieceClick Callback function invoked when the art card is clicked.
+ * @param modifier Modifier for customizing the layout.
+ *
+ * @see Surface
+ * @see AsyncImage
+ */
 @Composable
 fun ArtCard(
     art : Artpiece,
@@ -100,7 +123,6 @@ fun ArtCard(
     Surface (
         shape = MaterialTheme.shapes.medium,
         modifier = modifier
-            //.padding(4.dp)
             .fillMaxWidth()
             .clickable { onArtpieceClick(art) },
         color = MaterialTheme.colorScheme.secondaryContainer,

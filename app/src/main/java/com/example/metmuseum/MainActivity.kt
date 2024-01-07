@@ -14,7 +14,21 @@ import com.example.metmuseum.ui.MetMuseumApp
 import com.example.metmuseum.ui.theme.MetMuseumTheme
 import com.example.metmuseum.ui.util.NavigationType
 
+/**
+ * The main activity of the Met Museum app, responsible for setting up the user interface and navigation.
+ *
+ * This activity utilizes Jetpack Compose for building the UI and ExperimentalMaterial3WindowSizeClassApi
+ * for calculating the window size class.
+ *
+ * @constructor Creates a new instance of MainActivity.
+ */
 class MainActivity : ComponentActivity() {
+
+    /**
+     * Overrides the `onCreate` method to initialize the activity's UI and content.
+     *
+     * @param savedInstanceState The saved instance state, if any.
+     */
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

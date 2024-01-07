@@ -5,15 +5,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -26,7 +23,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.metmuseum.R
@@ -37,8 +33,18 @@ import com.example.metmuseum.ui.components.ArtDetail
 import com.example.metmuseum.ui.components.ArtScreenColumn
 import com.example.metmuseum.ui.components.ErrorScreen
 import com.example.metmuseum.ui.components.LoadingScreen
-import com.example.metmuseum.ui.theme.MetMuseumTheme
 
+
+/**
+ * Composable function for displaying the overview of art pieces within a specified department.
+ *
+ * @param department The Department for which the art overview is displayed.
+ * @param onBack Callback to be invoked when the back action is triggered.
+ * @param modifier Optional modifier for customizing the appearance of the composable.
+ * @param artOverviewViewModel ViewModel for managing the state and logic of the art overview.
+ *
+ * @see Composable
+ */
 @Composable
 fun ArtOverview(
     department: Department,
@@ -59,8 +65,6 @@ fun ArtOverview(
 
     val lazyListState = rememberLazyListState()
 
-    //TODO: WHEN OFFLINE NEW DEP -> EMPTY LIST: NO INTERNET
-
     Column {
         when(artpieceApiState) {
             is ArtpieceApiState.Loading -> {
@@ -79,7 +83,6 @@ fun ArtOverview(
             }
             is ArtpieceApiState.Success -> {
                 if (artOverviewState.selectedArtpiece == null) {
-                    Log.i("ArtOverview", "selectedArtpiece is null")
                     Row (
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceBetween,
@@ -117,7 +120,6 @@ fun ArtOverview(
 
                     )
                 } else {
-                    Log.i("ArtOverview", "selectedArtpiece is ${artOverviewState.selectedArtpiece}")
                     ArtDetail(
                         artpiece = artOverviewState.selectedArtpiece!!,
                         onBack = { artOverviewViewModel.setArtpiece(null) }
